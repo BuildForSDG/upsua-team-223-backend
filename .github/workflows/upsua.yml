@@ -3,7 +3,7 @@ name: upsua
 on:
   pull_request:
     branches:
-      - master
+      - developper
 
 jobs:
   upsua-tests:
