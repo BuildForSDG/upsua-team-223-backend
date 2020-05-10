@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserPassRequest;
@@ -14,18 +15,6 @@ use DB;
 
 class UsersController extends Controller
 {
-	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
-    {
-         $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:user-create', ['only' => ['create','store']]);
-         $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
-    }
     /**
      * Display a listing of the users
      *
@@ -35,7 +24,7 @@ class UsersController extends Controller
     public function index(User $model)
     {
         $model=User::all();
-        return view('users.index', ['users' => $model]);
+        return ['users' => $model];
     }
 
     /**
@@ -46,7 +35,7 @@ class UsersController extends Controller
     public function create()
     {
 		$roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return compact('roles');
     }
 
     /**
@@ -61,7 +50,7 @@ class UsersController extends Controller
         $user =$model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
         $user->api_token = Str::random(60);
 		$user->assignRole($request->input('roles'));
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        return ('User successfully created.');
     }
 
 	/**
@@ -73,7 +62,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return compact('user');
     }
 
     /**
@@ -86,7 +75,7 @@ class UsersController extends Controller
     {
 		$roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
-        return view('users.edit', compact('user','roles','userRole'));
+        return compact('user','roles','userRole');
     }
 
     /**
@@ -105,13 +94,13 @@ class UsersController extends Controller
 		DB::table('model_has_roles')->where('model_id',$user->id)->delete();
 		$user->assignRole($request->input('roles'));
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        return ('User successfully updated.');
     }
     public function updatePassword(UserPassRequest $request, User  $user)
     {
         $user->password=Hash::make($request->get('password'));
         $user->save();
-        return redirect()->route('user.index')->withStatus(__('password successfully updated.'));
+        return ('password successfully updated.');
     }
 
     /**
@@ -124,6 +113,7 @@ class UsersController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+        return ('User successfully deleted.');
     }
 }
+
