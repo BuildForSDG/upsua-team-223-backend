@@ -25,8 +25,22 @@ Talk about what problem this solves, what SDG(s) and SGD targets it addresses an
 
 
 ## Setup
+Run `git clone https://github.com/BuildForSDG/upsua-team-223-backend.git`
+
+Run `cd upsua-team-223-backend`
 
 Run `composer install` and `composer dump-autoload` to get started.
+
+Run `cp .env.example .env`
+
+Run `php artisan key:generate`
+
+- Make sure you set the correct database connection information before running the migrations Environment variables
+
+Run `php artisan migrate:refresh --seed`
+Run `php artisan serve`
+
+
 
 `index.php` is the entry to the project and source code should go into the `src` folder.
 

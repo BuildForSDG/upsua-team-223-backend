@@ -1,10 +1,10 @@
 <?php
-  
+
 use Illuminate\Database\Seeder;
 use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-  
+
 class CreateAdminUserSeeder extends Seeder
 {
     /**
@@ -15,17 +15,21 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-        	'name' => 'blondin', 
-        	'email' => 'blondin@gmail.com',
-        	'password' => bcrypt('blondin')
+            'name' => 'Upsua admin',
+            'phone' => '695932023',
+        	'email' => 'upsua@upsua.com',
+			'email_verified_at' => now(),
+        	'password' => bcrypt('upsua'),
+			'created_at' => now(),
+            'updated_at' => now()
         ]);
-  
+
         $role = Role::create(['name' => 'Admin']);
-   
+
         $permissions = Permission::pluck('id','id')->all();
-  
+
         $role->syncPermissions($permissions);
-   
+
         $user->assignRole([$role->id]);
     }
 }
