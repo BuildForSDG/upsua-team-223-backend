@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', "HomeController@index");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -29,4 +27,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     Route::resource('roles','RoleController');
 });
-
