@@ -17,7 +17,6 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id')->nullable();
             $table->string('transaction_code')->nullable()->unique();
-            $table->string('type')->nullable();
             $table->enum('type', ['Pay in', 'Pay out'])->default('Pay in');
             $table->decimal('amount', 18, 2)->nullable();
             $table->decimal('post_balance', 18, 2)->nullable();

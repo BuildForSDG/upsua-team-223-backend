@@ -97,6 +97,11 @@
                                     {{ __('My profile') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('messages') }}">
+                                    {{ __('Messages') }}
+                                </a>
+                            </li>
                             @can('user-list')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
