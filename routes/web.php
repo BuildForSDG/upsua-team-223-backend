@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', "HomeController@index");
 Auth::routes();
+
+Route::get('login/github', 'Auth\LoginController@redirectToGithub')->name('login.github');
+Route::get('login/github/callback', 'Auth\LoginController@handleGithubCallback');
+Route::post('/github/events', 'GithubEventsController@index')->name('github.events');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
@@ -29,4 +31,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     Route::resource('roles','RoleController');
 });
-
