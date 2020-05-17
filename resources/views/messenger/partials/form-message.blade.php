@@ -1,13 +1,15 @@
-<h2>Add a new message</h2>
+<div class="card-body">
+    <h6 class="heading-small text-muted mb-4">Add a new message</h6>
 <form action="{{ route('messages.update', $thread->id) }}" method="post">
     {{ method_field('put') }}
     {{ csrf_field() }}
-        
-    <!-- Message Form Input -->
-    <div class="form-group">
+    <div class="pl-lg-4">
+        <!-- Subject Form Input -->
+        <div class="form-group">
         <textarea name="message" class="form-control">{{ old('message') }}</textarea>
     </div>
-
+    </div>
+    <div class="pl-lg-4">
     @if($users->count() > 0)
         <div class="checkbox">
             @foreach($users as $user)
@@ -22,4 +24,7 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary form-control">Submit</button>
     </div>
+</div>
+</div>
 </form>
+</div>

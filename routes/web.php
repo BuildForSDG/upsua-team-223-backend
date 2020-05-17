@@ -20,7 +20,7 @@ Route::get('login/github', 'Auth\LoginController@redirectToGithub')->name('login
 Route::get('login/github/callback', 'Auth\LoginController@handleGithubCallback');
 Route::post('/github/events', 'GithubEventsController@index')->name('github.events');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@dashboard')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -30,13 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     Route::resource('roles','RoleController');
+    Route::post('profile/logout','ProfileController@logoutOtherDevices')->name('logout.other.device');
+    Route::group(['prefix' => 'messages'], function () {
+        Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+        Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+        Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+    });
 });
 
-Route::group(['prefix' => 'messages'], function () {
-    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
-    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
-    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
-    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
-});
-
+Route::get('test', "HomeController@test");

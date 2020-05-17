@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('address')->nullable();
             $table->string('sex')->nullable();
+            $table->enum('userable_type', ["App\\\BasicAccount", "App\\\AdminAccount", "App\\\BusinessAccount", "App\\\PartnerAccount"])->default("App\\\BasicAccount");
+            $table->unsignedBigInteger('userable_id')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('cni_number')->nullable();
             $table->string('cni_img')->nullable();

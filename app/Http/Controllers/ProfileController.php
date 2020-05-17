@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\LogoutOtherDiviceRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -16,6 +19,16 @@ class ProfileController extends Controller
     public function edit()
     {
         return view('profile.edit');
+    }
+
+    /**
+     * logout on other devices except this.
+     *
+     * @return \Illuminate\Support\Facades\Auth
+     */
+    public function logoutOtherDevices(LogoutOtherDiviceRequest $request){
+        Auth::logoutOtherDevices($request->cpassword);
+        return back()->withStatus(__('Disconnection of all devices except this one successfully terminate.'));
     }
 
     /**

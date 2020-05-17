@@ -23,7 +23,7 @@
                     <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                         <div class="d-flex justify-content-between">
                             <a href="#" class="btn btn-sm btn-info mr-4">{{ __('history') }}</a>
-                            <a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>
+                            <a href="{{ url('messages') }}" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>
                         </div>
                     </div>
                     <div class="card-body pt-0 pt-md-4">
@@ -163,13 +163,25 @@
                             </div>
                         </form>
                         <hr class="my-4" />
-                        <form method="post" action="" autocomplete="off">
-                            @csrf
-                            @method('put')
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Disconnect from all devices other than this') }}</button>
+                            <form method="post" action="{{ route('logout.other.device') }}" autocomplete="off">
+                                <div class="pl-lg-4">
+                                @csrf
+                                @method('post')
+                                    <div class="form-group{{ $errors->has('cpassword') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-cpassword">{{ __('enter your password to confirm') }}</label>
+                                        <input type="password" name="cpassword" id="input-cpassword" class="form-control form-control-alternative{{ $errors->has('cpassword') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+
+                                        @if ($errors->has('cpassword'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('cpassword') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success mt-4">{{ __('Disconnect from all devices other than this') }}</button>
+                                    </div>
                                 </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>

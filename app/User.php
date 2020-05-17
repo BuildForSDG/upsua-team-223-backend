@@ -40,4 +40,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @Single Table Inheritance, polymorphic relationships
+     */
+
+    public function userable(){
+        return $this->morphTo();
+    }
+    public function account(){
+        return $this->hasOne(Account::class);
+    }
+
+    public function type(){
+        if($this->userable_type=="App\\BasicAccount"){
+            return 'basic';
+        }elseif($this->userable_type=="App\\AdminAccount"){
+            return 'admin';
+        }elseif($this->userable_type=="App\\BusinessAccount"){
+            return 'business';
+        }else{
+            return 'partner';
+        }
+    }
 }

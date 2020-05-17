@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('account_id')->nullable();
+            $table->unsignedBigInteger('account_id');
             $table->string('transaction_code')->nullable()->unique();
             $table->enum('type', ['Pay in', 'Pay out'])->default('Pay in');
             $table->decimal('amount', 18, 2)->nullable();
