@@ -97,11 +97,7 @@
                                     {{ __('My profile') }}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('messages') }}">
-                                    {{ __('Messages') }}
-                                </a>
-                            </li>
+                            
                             @can('user-list')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
@@ -113,6 +109,31 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-badge text-puple" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #d6683c;">{{ __('Messages') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('messages') }}">
+                                    {{ __('Mes Messages') }}
+                                </a>
+                            </li>
+                            
+                            @can('user-list')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('messages.create') }}">
+                                    {{ __('Nouveau message') }}
+                                </a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+                
 				@can('role-list')
 				<li class="nav-item">
                     <a class="nav-link" href="{{ route('roles.index') }}">
