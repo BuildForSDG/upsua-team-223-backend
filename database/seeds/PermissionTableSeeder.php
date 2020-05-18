@@ -24,6 +24,14 @@ class PermissionTableSeeder extends Seeder
            'user-other-create',
            'user-other-edit',
            'account-management',
+           'country-list',
+           'country-create',
+           'country-edit',
+           'country-delete',
+           'locality-list',
+           'locality-create',
+           'locality-edit',
+           'locality-delete',
         ];
 
 

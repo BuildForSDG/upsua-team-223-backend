@@ -141,17 +141,21 @@
 
                     <div class="collapse" id="navbar-zone">
                         <ul class="nav nav-sm flex-column">
+                            @can('country-list')
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('country.index') }}">
                                     {{ __('country management') }}
                                 </a>
                             </li>
+                            @endcan
 
+                            @can('country-list')
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('locality.index') }}">
                                     {{ __('locality management') }}
                                 </a>
                             </li>
+                            @endcan
                         </ul>
                     </div>
                 </li>

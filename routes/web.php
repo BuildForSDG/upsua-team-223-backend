@@ -48,6 +48,9 @@ Route::middleware('admin')->group(function () {
     //account manager
     Route::put('account/{user}/type', 'OtherUserController@accountToType')->name('users.account.type');
     Route::put('account/{user}/debited', 'OtherUserController@accountToDebited')->name('users.account.debited');
+
+    Route::resource('country', 'CountryController');
+    Route::resource('locality', 'LocalityController');
 });
 Route::middleware('basic')->group(function () {
 });
