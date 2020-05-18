@@ -26,7 +26,8 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Support\Facades\Auth
      */
-    public function logoutOtherDevices(LogoutOtherDiviceRequest $request){
+    public function logoutOtherDevices(LogoutOtherDiviceRequest $request)
+    {
         Auth::logoutOtherDevices($request->cpassword);
         return back()->withStatus(__('Disconnection of all devices except this one successfully terminate.'));
     }

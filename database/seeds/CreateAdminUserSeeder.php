@@ -22,17 +22,17 @@ class CreateAdminUserSeeder extends Seeder
             'phone' => '695932023',
             'email' => 'upsua@upsua.com',
             'country_id' => 39,
-			'email_verified_at' => now(),
+            'email_verified_at' => now(),
             'password' => bcrypt('upsua123'),
             'userable_type' => 'App\\AdminAccount',
             'userable_id'=> $admin->id,
-			'created_at' => now(),
+            'created_at' => now(),
             'updated_at' => now()
         ]);
 
         $role = Role::create(['name' => 'Admin']);
 
-        $permissions = Permission::pluck('id','id')->all();
+        $permissions = Permission::pluck('id', 'id')->all();
 
         $role->syncPermissions($permissions);
 

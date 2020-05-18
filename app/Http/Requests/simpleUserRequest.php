@@ -27,7 +27,7 @@ class simpleUserRequest extends FormRequest
     {
         $id = $this->user ? ',' . $this->user->id : '';
         return [
-			'phone' => 'required|string|max:255|unique:users,phone' . $id,
+            'phone' => 'required|string|max:255|unique:users,phone' . $id,
             'name' => [
                 'required', 'min:3'
             ],

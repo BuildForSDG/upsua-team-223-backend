@@ -66,8 +66,7 @@ class LoginController extends Controller
         //save the user to the database.
         $dbUser = User::where('github_user_id', $user->user['id'])->first();
 
-        if( is_null($dbUser) )
-        {
+        if (is_null($dbUser)) {
             DB::beginTransaction();
             //normal configuration of account
             $basic=new BasicAccount;

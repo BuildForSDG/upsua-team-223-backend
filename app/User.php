@@ -11,7 +11,7 @@ use Cmgmyr\Messenger\Traits\Messagable;
 class User extends Authenticatable
 {
     use Notifiable;
-	use HasRoles;
+    use HasRoles;
     use Messagable;
     /**
      * The attributes that are mass assignable.
@@ -47,21 +47,24 @@ class User extends Authenticatable
      * @Single Table Inheritance, polymorphic relationships
      */
 
-    public function userable(){
+    public function userable()
+    {
         return $this->morphTo();
     }
-    public function account(){
+    public function account()
+    {
         return $this->hasOne(Account::class);
     }
 
-    public function type(){
-        if($this->userable_type=="App\\BasicAccount"){
+    public function type()
+    {
+        if ($this->userable_type=="App\\BasicAccount") {
             return 'basic';
-        }elseif($this->userable_type=="App\\AdminAccount"){
+        } elseif ($this->userable_type=="App\\AdminAccount") {
             return 'admin';
-        }elseif($this->userable_type=="App\\BusinessAccount"){
+        } elseif ($this->userable_type=="App\\BusinessAccount") {
             return 'business';
-        }else{
+        } else {
             return 'partner';
         }
     }

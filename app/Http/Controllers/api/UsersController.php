@@ -34,7 +34,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-		$roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
         return compact('roles');
     }
 
@@ -49,11 +49,11 @@ class UsersController extends Controller
     {
         $user =$model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
         $user->api_token = Str::random(60);
-		$user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('roles'));
         return ('User successfully created.');
     }
 
-	/**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -73,9 +73,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-		$roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-        return compact('user','roles','userRole');
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+        return compact('user', 'roles', 'userRole');
     }
 
     /**
@@ -91,8 +91,8 @@ class UsersController extends Controller
         $user->phone=$request->phone;
         $user->email=$request->email;
         $user->save();
-		DB::table('model_has_roles')->where('model_id',$user->id)->delete();
-		$user->assignRole($request->input('roles'));
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        $user->assignRole($request->input('roles'));
 
         return ('User successfully updated.');
     }
@@ -116,4 +116,3 @@ class UsersController extends Controller
         return ('User successfully deleted.');
     }
 }
-

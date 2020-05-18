@@ -15,17 +15,17 @@ use DB;
 
 class UsersController extends Controller
 {
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    public function __construct()
     {
-         $this->middleware('permission:user-list|user-admin-create|user-admin-edit|user-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:user-admin-create', ['only' => ['create','store']]);
-         $this->middleware('permission:user-admin-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:user-list|user-admin-create|user-admin-edit|user-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:user-admin-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-admin-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the users
@@ -46,8 +46,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-		$roles = Role::pluck('name','name')->all();
-        return view('users.admin.create',compact('roles'));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('users.admin.create', compact('roles'));
     }
 
     /**
@@ -68,7 +68,7 @@ class UsersController extends Controller
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
-	/**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -77,7 +77,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.admin.show',compact('user'));
+        return view('users.admin.show', compact('user'));
     }
 
     /**
@@ -88,9 +88,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-		$roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-        return view('users.admin.edit', compact('user','roles','userRole'));
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+        return view('users.admin.edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -106,8 +106,8 @@ class UsersController extends Controller
         $user->phone=$request->phone;
         $user->email=$request->email;
         $user->save();
-		DB::table('model_has_roles')->where('model_id',$user->id)->delete();
-		$user->assignRole($request->input('roles'));
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        $user->assignRole($request->input('roles'));
 
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }

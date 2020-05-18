@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\accountTransactionsRequest;
 use App\BasicAccount;
 use App\BusinessAccount;
 use App\PartnerAccount;
@@ -19,18 +20,18 @@ use DB;
 
 class OtherUserController extends Controller
 {
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    public function __construct()
     {
-         $this->middleware('permission:user-list|user-other-create|user-other-edit|user-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:user-other-create', ['only' => ['create','store']]);
-         $this->middleware('permission:user-other-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
-         $this->middleware('permission:account-management', ['only' => ['accountManagement']]);
+        $this->middleware('permission:user-list|user-other-create|user-other-edit|user-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:user-other-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-other-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:account-management', ['only' => ['accountManagement','accountToType']]);
     }
 
     /**
@@ -64,7 +65,7 @@ class OtherUserController extends Controller
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
-	/**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -73,7 +74,7 @@ class OtherUserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.other.show',compact('user'));
+        return view('users.other.show', compact('user'));
     }
 
     /**
@@ -134,7 +135,23 @@ class OtherUserController extends Controller
         DB::commit();
         return redirect()->route('user.index')->withStatus(__('Account successfully updated.'));
     }
-    public function accountManagement($user_id){
-
+    public function accountManagement($user_id)
+    {
+        $user = User::find($user_id);
+        return view('users.other.account', compact('user'));
+    }
+    public function accountToType(accountTransactionsRequest $request, User  $user)
+    {
+        DB::beginTransaction();
+        $account=$user->account;
+        if($request->type=='credited'){
+            $account->balance+=$request->amount;
+        }
+        if($request->type=='debited'){
+            $account->balance-=$request->amount;
+        }
+        $account->save();
+        DB::commit();
+        return redirect()->route('user.index')->withStatus(__('transaction completed successfully'));
     }
 }

@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        if(Auth()->user()->userable_type==="App\\AdminAccount"){
+        if (Auth()->user()->userable_type==="App\\AdminAccount") {
             return view('dashboard-admin');
         }
         return view('dashboard-user');

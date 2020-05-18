@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::post('profile/logout','ProfileController@logoutOtherDevices')->name('logout.other.device');
+    Route::post('profile/logout', 'ProfileController@logoutOtherDevices')->name('logout.other.device');
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
         Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
@@ -38,20 +38,20 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::middleware('admin')->group(function () {
     Route::put('user/{user}/password', 'UsersController@updatePassword')->name('users.update.pass');
-    Route::resource('roles','RoleController');
+    Route::resource('roles', 'RoleController');
     Route::resource('user', 'UsersController');
     Route::resource('users', 'OtherUserController');
     Route::put('user/{user}/business', 'OtherUserController@updateToBusiness')->name('users.to.business');
     Route::put('user/{user}/partner', 'OtherUserController@updateToPartner')->name('users.update.partner');
     Route::get('user/{user}/account', 'OtherUserController@accountManagement')->name('users.account');
 
+    //account manager
+    Route::put('account/{user}/type', 'OtherUserController@accountToType')->name('users.account.type');
+    Route::put('account/{user}/debited', 'OtherUserController@accountToDebited')->name('users.account.debited');
 });
 Route::middleware('basic')->group(function () {
-
 });
 Route::middleware('business')->group(function () {
-
 });
 Route::middleware('partner')->group(function () {
-
 });
