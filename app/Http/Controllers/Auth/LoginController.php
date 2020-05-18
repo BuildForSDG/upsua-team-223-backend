@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\BasicAccount;
+use App\Account;
+use DB;
 
 class LoginController extends Controller
 {
@@ -65,7 +68,12 @@ class LoginController extends Controller
 
         if( is_null($dbUser) )
         {
-            //register the user 
+            DB::beginTransaction();
+            //normal configuration of account
+            $basic=new BasicAccount;
+            $basic->save();
+
+            //register the user
             $dbUser = new User;
 
             $dbUser->name = $user->name;
@@ -73,11 +81,20 @@ class LoginController extends Controller
             $dbUser->github_user_id = $user->user['id'];
             $dbUser->api_token = $user->token;
             $dbUser->email_verified_at = now();
+            $dbUser->userable_type = 'App\\BasicAccount';
+            $dbUser->userable_id = $basic->id;
 
             $dbUser->save();
+
+            //normal configuration of account
+            $account=new Account;
+            $account->user_id=$user->id;
+            $account->balance=0;
+            $account->save();
+            DB::commit();
         }
 
-        //authenticate the user 
+        //authenticate the user
         Auth::loginUsingId($dbUser->id);
 
         return redirect()->route('dashboard');

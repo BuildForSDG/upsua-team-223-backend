@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('sex')->nullable();
             $table->enum('userable_type', ["App\\\BasicAccount", "App\\\AdminAccount", "App\\\BusinessAccount", "App\\\PartnerAccount"])->default("App\\\BasicAccount");
-            $table->unsignedBigInteger('userable_id')->nullable();
+            $table->unsignedBigInteger('userable_id');
             $table->date('date_of_birth')->nullable();
             $table->string('cni_number')->nullable();
             $table->string('cni_img')->nullable();
@@ -35,11 +35,9 @@ class CreateUsersTable extends Migration
             $table->string('phone_2')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('pin')->nullable()->unique();
             $table->string('code')->nullable()->unique();
-            $table->string('qr_code')->nullable()->unique();
-            $table->string('rfid_code')->nullable()->unique();
             $table->string('api_token', 80)->nullable()->default(null);
+            $table->boolean('status')->default(true);
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->foreign('locality_id')->references('id')->on('localities')->onDelete('cascade');
             $table->rememberToken();

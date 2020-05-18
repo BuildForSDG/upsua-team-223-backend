@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\AdminAccount;
 use DB;
 
 class UsersController extends Controller
@@ -21,9 +22,9 @@ class UsersController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:user-create', ['only' => ['create','store']]);
-         $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:user-list|user-admin-create|user-admin-edit|user-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:user-admin-create', ['only' => ['create','store']]);
+         $this->middleware('permission:user-admin-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
     /**
@@ -46,7 +47,7 @@ class UsersController extends Controller
     public function create()
     {
 		$roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('users.admin.create',compact('roles'));
     }
 
     /**
@@ -58,9 +59,12 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $user =$model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-        $user->api_token = Str::random(60);
-		$user->assignRole($request->input('roles'));
+        DB::beginTransaction();
+        $admin=new AdminAccount;
+        $admin->save();
+        $user =$model->create($request->merge(['password' => Hash::make($request->get('password')),'userable_type' => 'App\\AdminAccount','userable_id'=>$admin->id,'api_token' => Str::random(60)])->all());
+        $user->assignRole($request->input('roles'));
+        DB::commit();
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
@@ -73,7 +77,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return view('users.admin.show',compact('user'));
     }
 
     /**
@@ -86,7 +90,7 @@ class UsersController extends Controller
     {
 		$roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
-        return view('users.edit', compact('user','roles','userRole'));
+        return view('users.admin.edit', compact('user','roles','userRole'));
     }
 
     /**

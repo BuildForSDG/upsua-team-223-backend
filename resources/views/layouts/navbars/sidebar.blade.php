@@ -132,13 +132,39 @@
                     </div>
                 </li>
 
-				@can('role-list')
+                @admin
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-zone" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-zone">
+                        <i class="ni ni-pin-3 text-puple" style="color: #78ca2b;"></i>
+                        <span class="nav-link-text" style="color: #58c21a;">{{ __('zone management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-zone">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    {{ __('country management') }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    {{ __('locality management') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                @can('role-list')
 				<li class="nav-item">
                     <a class="nav-link" href="{{ route('roles.index') }}">
                         <i class="ni ni-paper-diploma" style="color:#172b4d;"></i> {{ __('Roles') }}
                     </a>
                 </li>
                 @endcan
+                @endadmin
+
             </ul>
         </div>
     </div>

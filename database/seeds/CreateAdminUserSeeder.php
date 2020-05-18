@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\AdminAccount;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -14,13 +15,17 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run()
     {
+        $admin=new AdminAccount;
+        $admin->save();
         $user = User::create([
             'name' => 'Upsua admin',
             'phone' => '695932023',
             'email' => 'upsua@upsua.com',
             'country_id' => 39,
 			'email_verified_at' => now(),
-        	'password' => bcrypt('upsua'),
+            'password' => bcrypt('upsua123'),
+            'userable_type' => 'App\\AdminAccount',
+            'userable_id'=> $admin->id,
 			'created_at' => now(),
             'updated_at' => now()
         ]);

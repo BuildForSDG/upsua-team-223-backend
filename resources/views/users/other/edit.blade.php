@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Edit User')])   
+    @include('users.partials.header', ['title' => __('Edit User')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -54,51 +54,63 @@
                                         </span>
                                     @endif
                                 </div>
-								
-								<div class="col-xs-12 col-sm-12 col-md-12">
-									<div class="form-group">
-										<strong>{{ __('Roles') }}</strong>
-										<br/><br/>
-										@foreach($roles  as $v)
-										<div class="custom-control custom-checkbox mb-3">
-										  <input class="custom-control-input" name="roles[]" @foreach($userRole as $va) @if($v==$va) checked @endif @endforeach value="{{$v}}" id="customCheck1{{$v}}" type="checkbox">
-										  <label class="custom-control-label" for="customCheck1{{$v}}">{{ $v }}</label>
-										</div>
-										<br/>
-										@endforeach
-									</div>
-								</div>
+
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('send') }}</button>
                                 </div>
                             </div>
                         </form>
                         <form method="post" action="{{ route('users.update.pass', $user) }}" autocomplete="off">
+                            <div class="pl-lg-4">
                             @csrf
                             @method('put')
-                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required="true">
-                                    
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
+                               <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                        <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required="true">
+
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm password') }}</label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required="true">
                                 </div>
-                            <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('send') }}</button>
+                                <div class="text-center">
+                                        <button type="submit" class="btn btn-success mt-4">{{ __('send') }}</button>
                                 </div>
                             </div>
-                        </form>
+                            </form>
+                            @if($user->type()=='basic')
+                            <form method="post" action="{{ route('users.to.business', $user) }}" autocomplete="off">
+                                <div class="pl-lg-4">
+                                    @csrf
+                                    @method('put')
+                                    <div class="text-center">
+                                            <button type="submit" class="btn btn-success mt-4">{{ __('Set as Business account') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            @endif
+                            @if($user->type()=='business')
+                            <form method="post" action="{{ route('users.update.partner', $user) }}" autocomplete="off">
+                                <div class="pl-lg-4">
+                                    @csrf
+                                    @method('put')
+                                    <div class="text-center">
+                                            <button type="submit" class="btn btn-success mt-4">{{ __('Set as Partner account') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            @endif
                     </div>
                 </div>
             </div>
-        
+
         @include('layouts.footers.auth')
     </div>
 @endsection
