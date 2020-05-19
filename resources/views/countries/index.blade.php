@@ -10,7 +10,7 @@
 	        <h6 class="h2 text-white d-inline-block mb-0">Administration</h6>
 	        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
 	            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-	                <li class="breadcrumb-item"><a href="https://argon-dashboard-pro-laravel.creative-tim.com/dashboard"><i class="fas fa-home"></i></a></li>
+	                <li class="breadcrumb-item"><a href="{{ url('home') }}"><i class="fas fa-home"></i></a></li>
 	                <li class="breadcrumb-item"><a href="{{route('country.index')}}">Country</a></li>
 	            <li class="breadcrumb-item active" aria-current="page">List</li>
 	            </ol>
@@ -110,3 +110,15 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+@push('js')
+      <!-- Optional JS -->
+      <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+      <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+      <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
+      <script src="{{ asset('js/buttons.bootstrap4.min.js') }}"></script>
+      <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
+      <script src="{{ asset('js/buttons.flash.min.js') }}"></script>
+      <script src="{{ asset('js/buttons.print.min.js') }}"></script>
+      <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
+
+@endpush

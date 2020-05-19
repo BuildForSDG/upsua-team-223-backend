@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Locality;
+use App\Country;
 use Illuminate\Http\Request;
+use App\Http\Requests\LocalityRequest;
 use Spatie\Permission\Models\Permission;
 use DB;
 
@@ -26,9 +28,10 @@ class LocalityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $model=Locality::orderBy('id', 'ASC')->paginate(10);
+        return view('localities.index', ['localities' => $model])->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -38,7 +41,8 @@ class LocalityController extends Controller
      */
     public function create()
     {
-        //
+        $model=Country::all();
+        return view('localities.create', ['countries' => $model]);
     }
 
     /**
@@ -47,9 +51,15 @@ class LocalityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LocalityRequest $request)
     {
-        //
+        $locality = new Locality;
+        $locality->name=$request->name;
+        $locality->subdivision=$request->subdivision;
+        $locality->country_id=$request->country;
+        $locality->save();
+        return redirect()->route('locality.index')
+                        ->with('success', 'locality created successfully');
     }
 
     /**
@@ -60,7 +70,7 @@ class LocalityController extends Controller
      */
     public function show(Locality $locality)
     {
-        //
+        return view('localities.show', compact('locality'));
     }
 
     /**
@@ -71,7 +81,8 @@ class LocalityController extends Controller
      */
     public function edit(Locality $locality)
     {
-        //
+        $countries=Country::all();
+        return view('localities.edit', compact('locality','countries'));
     }
 
     /**
@@ -83,7 +94,12 @@ class LocalityController extends Controller
      */
     public function update(Request $request, Locality $locality)
     {
-        //
+        $locality->name=$request->name;
+        $locality->subdivision=$request->subdivision;
+        $locality->country_id=$request->country;
+        $locality->save();
+        return redirect()->route('locality.index')
+                        ->with('success', 'locality updated successfully');
     }
 
     /**
@@ -94,6 +110,8 @@ class LocalityController extends Controller
      */
     public function destroy(Locality $locality)
     {
-        //
+        $locality->delete();
+        return redirect()->route('locality.index')
+                        ->with('success', 'locality deleted successfully');
     }
 }

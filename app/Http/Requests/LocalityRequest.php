@@ -13,7 +13,7 @@ class LocalityRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,9 @@ class LocalityRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'subdivision' => 'required', 'min:3',
+            'country' => 'required', 'min:1',
         ];
     }
 }

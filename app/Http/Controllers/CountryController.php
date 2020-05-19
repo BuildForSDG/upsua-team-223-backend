@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use App\Http\Requests\CountryRequest;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use DB;
@@ -28,7 +29,7 @@ class CountryController extends Controller
      */
     public function index(Request $request)
     {
-        $model=Country::orderBy('id', 'DESC')->paginate(10);
+        $model=Country::orderBy('id', 'ASC')->paginate(10);
         return view('countries.index', ['countries' => $model])->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
@@ -39,7 +40,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.create');
     }
 
     /**
@@ -48,9 +49,16 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
-        //
+        $country = new Country;
+        $country->name=$request->name;
+        $country->currency=$request->currency;
+        $country->code=$request->code;
+        $country->iso_4217_currency_code=$request->iso_4217_currency_code;
+        $country->save();
+        return redirect()->route('country.index')
+                        ->with('success', 'Country created successfully');
     }
 
     /**
@@ -61,7 +69,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        return view('countries.show', compact('country'));
     }
 
     /**
@@ -72,7 +80,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('countries.edit', compact('country'));
     }
 
     /**
@@ -84,7 +92,13 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+        $country->name=$request->name;
+        $country->currency=$request->currency;
+        $country->code=$request->code;
+        $country->iso_4217_currency_code=$request->iso_4217_currency_code;
+        $country->save();
+        return redirect()->route('country.index')
+                        ->with('success', 'Country updated successfully');
     }
 
     /**
@@ -95,6 +109,8 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        return redirect()->route('country.index')
+                        ->with('success', 'Country deleted successfully');
     }
 }

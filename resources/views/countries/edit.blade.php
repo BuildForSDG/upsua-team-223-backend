@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('User Management')])
+@extends('layouts.app', ['title' => __('Country Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Edit User')])
+    @include('users.partials.header', ['title' => __('Edit Country')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,23 +10,33 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('User management') }}</h3>
+                                <h3 class="mb-0">{{ __('Country management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
+                                <a href="{{ route('country.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off">
+                        <form method="post" action="{{ route('country.update', $country) }}" autocomplete="off">
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Country information') }}</h6>
                             <div class="pl-lg-4">
+								<div class="form-group{{ $errors->has('code') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-code">{{ __('Code') }}</label>
+                                    <input type="text" name="code" value="{{$country->code}}" id="input-code" class="form-control form-control-alternative{{ $errors->has('code') ? ' is-invalid' : '' }}" placeholder="{{ __('Code ...') }}" value="{{ old('code') }}" required>
+
+                                    @if ($errors->has('code'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('code') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $user->name) }}" required autofocus>
+                                    <input type="text" name="name" value="{{$country->name}}" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name ...') }}" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -34,23 +44,23 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-phone">{{ __('Phone') }}</label>
-                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Entrer le telephone') }}" value="{{ old('phone', $user->phone) }}" required autofocus>
+                                <div class="form-group{{ $errors->has('currency') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-currency">{{ __('Currency') }}</label>
+                                    <input type="text" name="currency" value="{{$country->currency}}" id="input-currency" class="form-control form-control-alternative{{ $errors->has('currency') ? ' is-invalid' : '' }}" placeholder="{{ __('Currency ...') }}" value="{{ old('currency') }}" required autofocus>
 
-                                    @if ($errors->has('phone'))
+                                    @if ($errors->has('currency'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('phone') }}</strong>
+                                            <strong>{{ $errors->first('currency') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', $user->email) }}" required>
+                                <div class="form-group{{ $errors->has('iso_4217_currency_code') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-iso_4217_currency_code">{{ __('ISO 4217') }}</label>
+                                    <input type="text" name="iso_4217_currency_code" value="{{$country->iso_4217_currency_code}}" id="input-iso_4217_currency_code" class="form-control form-control-alternative{{ $errors->has('iso_4217_currency_code') ? ' is-invalid' : '' }}" placeholder="{{ __('ISO 4217 currency code') }}" value="{{ old('iso_4217_currency_code') }}" required>
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('iso_4217_currency_code'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('iso_4217_currency_code') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -60,55 +70,8 @@
                                 </div>
                             </div>
                         </form>
-                        <form method="post" action="{{ route('users.update.pass', $user) }}" autocomplete="off">
-                            <div class="pl-lg-4">
-                            @csrf
-                            @method('put')
-                               <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
-                                        <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required="true">
-
-                                        @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
-                                        @endif
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm password') }}</label>
-                                    <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required="true">
-                                </div>
-                                <div class="text-center">
-                                        <button type="submit" class="btn btn-success mt-4">{{ __('send') }}</button>
-                                </div>
-                            </div>
-                            </form>
-                            @if($user->type()=='basic')
-                            <form method="post" action="{{ route('users.to.business', $user) }}" autocomplete="off">
-                                <div class="pl-lg-4">
-                                    @csrf
-                                    @method('put')
-                                    <div class="text-center">
-                                            <button type="submit" class="btn btn-success mt-4">{{ __('Set as Business account') }}</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            @endif
-                            @if($user->type()=='business')
-                            <form method="post" action="{{ route('users.update.partner', $user) }}" autocomplete="off">
-                                <div class="pl-lg-4">
-                                    @csrf
-                                    @method('put')
-                                    <div class="text-center">
-                                            <button type="submit" class="btn btn-success mt-4">{{ __('Set as Partner account') }}</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            @endif
-                    </div>
-                </div>
+					</div>
+				</div>
             </div>
         </div>
         @include('layouts.footers.auth')

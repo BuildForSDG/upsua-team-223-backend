@@ -19,6 +19,7 @@ class CreateCountriesTable extends Migration
             $table->string('name');
             $table->string('currency');
             $table->string('iso_4217_currency_code');
+            $table->timestamps();
         });
     }
 

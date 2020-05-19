@@ -13,7 +13,7 @@ class CountryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,10 @@ class CountryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'currency' => 'required', 'min:1',
+            'code' => 'required', 'min:1',
+            'iso_4217_currency_code' => 'required', 'min:3',
         ];
     }
 }
