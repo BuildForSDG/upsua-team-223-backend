@@ -8,6 +8,8 @@ use App\Http\Requests\LogoutOtherDiviceRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Locality;
+use App\Country;
 
 class ProfileController extends Controller
 {
@@ -18,7 +20,9 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $countries=Country::all();
+        $localities=Locality::all();
+        return view('profile.edit',compact('localities','countries'));
     }
 
     /**
