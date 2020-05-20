@@ -11,7 +11,8 @@ The other problem is about mobility, the changing of locality or area of work ma
 
 Our solution is a mobile and universal financial service. Our aim is to combine Mobile network operator payment system (or e-wallet), banks services and other finance services provider in the same system, so that any persons with a smartphone or with a simple phone, with internet or without internet can access financial service, can open bank account our make bank operation, it can buy/sell or make transaction anywhere in the world. Another important aspect will therefore be the abolition of fees (or reduction) for a certain category of users, allowing them to better save money, thus promoting wealth creation at home and reducing the number of unemployed. It is necessary with a world where everybody is mobile that our bank account, financial service going mobile with us.
 We solve the problem of financial inclusion for those who lives in rural area, for those who working on informal sector, so that they can make any bank or financial operation.
-The solution give possibility when you have mobile account for send/receive money from mobile Network Operator, to also open an account to our platform, and our platform give possibily to send/receive money  to/from anywhere in the world, access to financial services(Bank/MFI account, e-wallet, insurance services…). The platform will allow user to sell/buy to/from anywhere in the world, deposit/ withdrawal money from anywhere.
+The solution give possibility when you have mobile account for send/receive money from mobile Network Operator, to also open an account to our platform, and our platform give possibily to send/receive money  to/from anywhere in the world, access to financial services(Bank/MFI account, e-wallet, insurance services…).
+ The platform will allow user to sell/buy to/from anywhere in the world, deposit/ withdrawal money from anywhere.
 
 
 ## Usage
