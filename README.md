@@ -1,5 +1,7 @@
 ## UPSUA is a universal payment system and a mobile bank, this system aims to solve the problems of access to financial services and increase financial inclusion. It mainly targets people with bank accounts and those who do not have any. With UPSUA any customer or tutor can shop online, withdraw money or deposit anywhere in the world. It thus allows a person living in rural area having only his phone to sell or buy inside his country or abroad, he can thus save and benefit from services such as insurance, and others banking services. The specifics of the project will easily allow it to spread easily in Africa so that we can finally easily fight poverty.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee8828e5772a4de99d6333414530dbf0)](https://app.codacy.com/gh/BuildForSDG/upsua-team-223-backend?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/upsua-team-223-backend&utm_campaign=Badge_Grade_Dashboard)
+
 ## Why
 
 - them Goal 8 Problem Statement 2 DECENT WORK AND ECONOMIC GROWTH
