@@ -9,4 +9,8 @@ class Transaction extends Model
     protected $fillable = [
         'transaction_code','type','amount','post_balance','iso_4217_currency_code','description',
     ];
+
+    public function account(){
+        return $this->hasOne(Account::class);
+    }
 }

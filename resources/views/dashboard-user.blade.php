@@ -165,25 +165,47 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <div class="card card-stats mb-4 mb-xl-0">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <h5 class="card-title text-uppercase text-muted mb-0">e-payment</h5>
-                                                                        <span class="h2 font-weight-bold mb-0">7</span>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                                                            <i class="fas fa-money-check"></i>
+                                                        <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="card card-stats mb-4 mb-xl-0">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <h5 class="card-title text-uppercase text-muted mb-0">e-payment</h5>
+                                                                            <span class="h2 font-weight-bold mb-0">7</span>
+                                                                        </div>
+                                                                        <div class="col-auto">
+                                                                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                                                <i class="fas fa-money-check"></i>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                                                        <span class="h6 text-success mr-2"><i class="fas fa-arrow-up"></i>Subscribed</span>
+                                                                        <span class="text-nowrap">Since last month</span>
+                                                                    </p>
                                                                 </div>
-                                                                <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="h6 text-success mr-2"><i class="fas fa-arrow-up"></i>Subscribed</span>
-                                                                    <span class="text-nowrap">Since last month</span>
-                                                                </p>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,9 +237,15 @@
                                         </span>
                                             <div class="card-serial-number h1 text-white">
                                                 <div>Balance</div>
-                                                <div>7421</div>
+                                                <div>{{ auth()->user()->account->balance }}</div>
                                                 <div>Currency</div>
-                                                <div>XAF</div>
+                                                <div>
+                                                    @if(isset(auth()->user()->country))
+                                                        {{ auth()->user()->country->iso_4217_currency_code }}
+                                                    @else
+                                                        <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-primary">{{ __('update profile') }}</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -239,7 +267,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0 text-white">Total traffic</h5>
-                                                <span class="h2 font-weight-bold mb-0 text-white">350</span>
+                                                <span class="h2 font-weight-bold mb-0 text-white">@if(isset(auth()->user()->account->transactions)){{ auth()->user()->account->transactions->count() }}@else 0 @endif</span>
                                             </div>
                                             <div class="col-auto">
                                                 <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -282,7 +310,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Transaction ID</th>
-                                    <th scope="col">Destination</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Additional fees</th>
                                     <th scope="col">Total costs</th>
@@ -290,23 +319,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(auth()->user()->account->transactions as $transaction)
                                 <tr>
-                                    <th scope="row">
-
-                                    </th>
                                     <td>
-
+                                        {{ $transaction->transaction_code }}
                                     </td>
                                     <td>
-
+                                        {{ $transaction->type }}
                                     </td>
                                     <td>
-
+                                        {{ $transaction->description }}
                                     </td>
                                     <td>
-
+                                        {{ $transaction->amount }} {{ $transaction->iso_4217_currency_code }}
+                                    </td>
+                                    <td>
+                                        0 {{ $transaction->iso_4217_currency_code }}
+                                    </td>
+                                    <td>
+                                        {{ $transaction->amount }} {{ $transaction->iso_4217_currency_code }}
+                                    </td>
+                                    <td>
+                                        {{ $transaction->created_at }}
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

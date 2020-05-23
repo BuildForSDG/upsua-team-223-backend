@@ -68,4 +68,8 @@ class User extends Authenticatable
             return 'partner';
         }
     }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
 }

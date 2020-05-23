@@ -822,7 +822,7 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-  <div id="preloader"></div>
+  <div id="preloaders"></div>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>

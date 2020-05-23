@@ -11,7 +11,7 @@ class Account extends Model
     ];
     public function transactions()
     {
-        $this->hasMany(Transaction::class);
+        return $this->hasMany('App\\Transaction','account_id','id');
     }
     public function user()
     {

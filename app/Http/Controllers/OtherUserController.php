@@ -15,6 +15,7 @@ use App\BasicAccount;
 use App\BusinessAccount;
 use App\PartnerAccount;
 use App\Account;
+use App\Transaction;
 use App\Http\Middleware\Partner;
 use DB;
 
@@ -145,9 +146,31 @@ class OtherUserController extends Controller
         DB::beginTransaction();
         $account=$user->account;
         if($request->type=='credited'){
+
+            $transaction=new Transaction;
+            $transaction->account_id=$account->id;
+            $transaction->transaction_code=randomString(10);
+            $transaction->type='Pay in';
+            $transaction->amount=$request->amount;
+            $transaction->post_balance=$account->balance;
+            $transaction->iso_4217_currency_code=$account->user->country->iso_4217_currency_code;
+            $transaction->description='Credited an account by upsua';
+            $transaction->save();
+
             $account->balance+=$request->amount;
         }
         if($request->type=='debited'){
+
+            $transaction=new Transaction;
+            $transaction->account_id=$account->id;
+            $transaction->transaction_code=randomString(10);
+            $transaction->type='Pay out';
+            $transaction->amount=$request->amount;
+            $transaction->post_balance=$account->balance;
+            $transaction->iso_4217_currency_code=$account->user->country->iso_4217_currency_code;
+            $transaction->description='Debited an account by upsua';
+            $transaction->save();
+
             $account->balance-=$request->amount;
         }
         $account->save();
