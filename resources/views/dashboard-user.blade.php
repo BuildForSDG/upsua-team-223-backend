@@ -15,7 +15,28 @@
                                                 <h6 class="h2 text-default text-center d-inline-block mb-0">International Services</h6>
                                                 <div class="row">
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <div class="card card-stats mb-4 mb-xl-0">
+                                                        <a href="#" data-toggle="modal" data-target="#internationalbanqueModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="internationalbanqueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                  <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                      <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                  </div>
+                                                                  <div class="modal-body">
+                                                                    ...
+                                                                  </div>
+                                                                  <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col">
@@ -34,8 +55,30 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
+                                                        <a href="#" data-toggle="modal" data-target="#internationalFinanceModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="internationalFinanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -55,8 +98,30 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
+                                                        <a href="#" data-toggle="modal" data-target="#internationalInsurenceModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="internationalInsurenceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -76,8 +141,30 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
+                                                        <a href="#" data-toggle="modal" data-target="#internationalpaymentModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="internationalpaymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -97,11 +184,33 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <h6 class="h2 text-default text-center d-inline-block mb-0">National Services</h6>
                                                 <div class="row mt-1">
                                                     <div class="col-xl-3 col-lg-6">
+                                                        <a href="#" data-toggle="modal" data-target="#localbankModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="localbankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                  <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                      <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                  </div>
+                                                                  <div class="modal-body">
+                                                                    ...
+                                                                  </div>
+                                                                  <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -123,6 +232,27 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
+                                                        <a href="#" data-toggle="modal" data-target="#localfinanceModal">
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="localfinanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                ...
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -142,32 +272,55 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <div class="card card-stats mb-4 mb-xl-0">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <h5 class="card-title text-uppercase text-muted mb-0">Insurance</h5>
-                                                                        <span class="h2 font-weight-bold mb-0">92</span>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                                                            <i class="fas fa-users"></i>
+                                                        <a href="#" data-toggle="modal" data-target="#localInsuranceModal">
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="localInsuranceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="card card-stats mb-4 mb-xl-0">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <h5 class="card-title text-uppercase text-muted mb-0">Insurance</h5>
+                                                                            <span class="h2 font-weight-bold mb-0">92</span>
+                                                                        </div>
+                                                                        <div class="col-auto">
+                                                                            <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                                                                <i class="fas fa-users"></i>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                                                        <span class="h6 text-success mr-2"><i class="fas fa-arrow-up"></i> subscribed </span>
+                                                                        <span class="text-nowrap">Since yesterday</span>
+                                                                    </p>
                                                                 </div>
-                                                                <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="h6 text-success mr-2"><i class="fas fa-arrow-up"></i> subscribed </span>
-                                                                    <span class="text-nowrap">Since yesterday</span>
-                                                                </p>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                                        <a href="#" data-toggle="modal" data-target="#localPayementModal">
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="localPayementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
@@ -227,8 +380,39 @@
                                                 <img width="100px" src="{{ asset('argon') }}/img/brand/white.png" alt="Image placeholder" />
                                             </div>
                                             <div class="col-auto">
-                                                <span class="bg-white badge badge-lg badge-success" font-size="10px">transfer money</span>
-                                                <span class="bg-white badge badge-lg badge-success" font-size="10px">Credit account</span>
+                                            <a href="#" data-toggle="modal" data-target="#modalTrRenotification">
+                                            <span class="bg-white badge badge-lg badge-success" font-size="10px">transfer / credit</span>
+                                            <!--<span class="bg-white badge badge-lg badge-success" font-size="10px">Credit account</span>-->
+                                            <div class="modal fade" id="modalTrRenotification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+                                                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                                                    <div class="modal-content bg-gradient-danger">
+
+                                                        <div class="modal-header">
+                                                            <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="modal-body">
+
+                                                            <div class="py-3 text-center">
+                                                                <i class="ni ni-bell-55 ni-3x"></i>
+                                                                <h4 class="heading mt-4">To make transactions or other services, please click on the corresponding name in the boxes.</h4>
+                                                                <p>To credit or transfer money to another account, please click on the e-payment frame.The local section for local mode and international for other modes.</p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white">Ok, Got it</button>
+                                                            <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </a>
                                             </div>
                                         </div>
                                         <div class="my-4">

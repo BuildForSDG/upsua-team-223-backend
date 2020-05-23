@@ -46,19 +46,23 @@ link: http://localhost:8000
 The team behind this project initiative are:
 
 
-Martin Ange MBALKAM : Pavtino; 
-KAMGUE FOKOUA BLONDIN : kamgueblondin; 
-Ndi cedric : Myced; 
-DJOMAGA Christian : christianwilfried31; 
+- **[KAMGUE FOKOUA BLONDIN](https://github.com/kamgueblondin)**
+- **[Martin Ange MBALKAM - Technical Team Lead](https://github.com/Pavtino)**
+- **[Ndi cedric](https://github.com/Myced)**
+- **[DJOMAGA Christian](https://github.com/christianwilfried31)**
+- **[Ruth Waithera - Mentor](https://github.com/rwaithera)**
 
+
+## Contributing
+
+If this project sounds interesting to you and you'd like to contribute, thank you! First, you can send a mail to buildforsdg@andela.com to indicate your interest, why you'd like to support and what forms of support you can bring to the table, but here are areas we think we'd need the most help in this project.
 
 ## Acknowledgements
 
-Did you use someone else’s code?
-Do you want to thank someone explicitly?
-Did someone’s blog post spark off a wonderful idea or give you a solution to nagging problem?
-
-It's powerful to always give credit.
+-   Hat tip to anyone whose code was used
+-   Andela Learning Community
+-   Facebook
 
 ## LICENSE
-MIT
+
+This project is licensed under the MIT License
