@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use App\BasicAccount;
+use App\Account;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -66,12 +69,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        DB::beginTransaction();
+        $basic=new BasicAccount;
+        $basic->save();
+        $user = User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'userable_type' => 'App\\BasicAccount',
+            'userable_id'=> $basic->id,
             'api_token' => Str::random(60),
         ]);
+        $account=new Account;
+        $account->user_id=$user->id;
+        $account->balance=0;
+        $account->save();
+        DB::commit();
+
+        return $user;
     }
 }

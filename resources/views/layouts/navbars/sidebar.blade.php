@@ -97,6 +97,7 @@
                                     {{ __('My profile') }}
                                 </a>
                             </li>
+
                             @can('user-list')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
@@ -108,13 +109,66 @@
                     </div>
                 </li>
 
-				@can('role-list')
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-messages" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-messages">
+                        <i class="ni ni-send text-puple" style="color: #ac5ff4;"></i>
+                        <span class="nav-link-text" style="color: #913cd6;">{{ __('Messages') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-messages">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('messages') }}">
+                                    {{ __('Messages list') }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('messages.create') }}">
+                                    {{ __('New message') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                @admin
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-zone" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-zone">
+                        <i class="ni ni-pin-3 text-puple" style="color: #78ca2b;"></i>
+                        <span class="nav-link-text" style="color: #58c21a;">{{ __('zone management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-zone">
+                        <ul class="nav nav-sm flex-column">
+                            @can('country-list')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('country.index') }}">
+                                    {{ __('country management') }}
+                                </a>
+                            </li>
+                            @endcan
+
+                            @can('country-list')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('locality.index') }}">
+                                    {{ __('locality management') }}
+                                </a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+
+                @can('role-list')
 				<li class="nav-item">
                     <a class="nav-link" href="{{ route('roles.index') }}">
                         <i class="ni ni-paper-diploma" style="color:#172b4d;"></i> {{ __('Roles') }}
                     </a>
                 </li>
                 @endcan
+                @endadmin
+
             </ul>
         </div>
     </div>

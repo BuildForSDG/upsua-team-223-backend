@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Events\UserRegistered;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,8 +28,18 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
+        if (Auth()->user()->userable_type==="App\\AdminAccount") {
+            return view('dashboard-admin');
+        }
         // event(new UserRegistered(User::find(1)));
-        return view('dashboard');
+        return view('dashboard-user');
+    }
+
+    public function test()
+    {
+        //dd(Auth()->user()->userable->business->user);
+        //dd(Auth()->user()->type());
+        return view('test');
     }
 
     public function notifications()

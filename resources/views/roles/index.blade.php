@@ -12,7 +12,7 @@
 	            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
 	                <li class="breadcrumb-item"><a href="https://argon-dashboard-pro-laravel.creative-tim.com/dashboard"><i class="fas fa-home"></i></a></li>
 	                <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
-	            <li class="breadcrumb-item active" aria-current="page">Liste</li>
+	            <li class="breadcrumb-item active" aria-current="page">List</li>
 	            </ol>
 	        </nav>
 	    </div>
@@ -64,6 +64,7 @@
 						 <th>Name</th>
 						 <th width="280px">Action</th>
 					  </tr>
+					    @php $i=0; @endphp
 						@foreach ($roles as $key => $role)
 						<tr>
 							<td>{{ ++$i }}</td>
