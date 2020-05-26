@@ -86,8 +86,8 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="ni ni-badge text-puple" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #d6683c;">{{ __('Users') }}</span>
+                        <i class="ni ni-single-02 text-puple" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #d6683c;">{{ __('User') }}</span>
                     </a>
 
                     <div class="collapse" id="navbar-examples">
@@ -131,7 +131,69 @@
                         </ul>
                     </div>
                 </li>
+                @basic
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-bank" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-bank">
+                        <i class="ni ni-chart-bar-32 text-puple" style="color: #7e7586;"></i>
+                        <span class="nav-link-text" style="color: #3cd649;">{{ __('My Bank') }}</span>
+                    </a>
 
+                    <div class="collapse" id="navbar-bank">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-finance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-finance">
+                        <i class="ni ni-chart-pie-35 text-puple" style="color: #749938;"></i>
+                        <span class="nav-link-text" style="color: #a0a9dd;">{{ __('My Finance') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-finance">
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-insurance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-insurance">
+                        <i class="ni ni-badge text-puple" style="color: #312c35;"></i>
+                        <span class="nav-link-text" style="color: #0e227a;">{{ __('My Insurance') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-insurance">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endbasic
+                @business
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-money-coins" style="color:#172b4d;"></i> {{ __('Transactions') }}
+                    </a>
+                </li>
+                @endbusiness
+                @partner
+
+                @endpartner
                 @admin
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-zone" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-zone">
