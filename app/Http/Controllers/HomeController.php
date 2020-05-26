@@ -31,6 +31,7 @@ class HomeController extends Controller
         if (Auth()->user()->userable_type==="App\\AdminAccount") {
             return view('dashboard-admin');
         }
+        // event(new UserRegistered(User::find(1)));
         return view('dashboard-user');
     }
 
@@ -39,5 +40,10 @@ class HomeController extends Controller
         //dd(Auth()->user()->userable->business->user);
         //dd(Auth()->user()->type());
         return view('test');
+    }
+
+    public function notifications()
+    {
+        return view('notifications');
     }
 }
