@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Events\UserRegistered;
+
 class HomeController extends Controller
 {
     /**
@@ -26,6 +29,12 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
+        // event(new UserRegistered(User::find(1)));
         return view('dashboard');
+    }
+
+    public function notifications()
+    {
+        return view('notifications');
     }
 }

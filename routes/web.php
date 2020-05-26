@@ -22,6 +22,7 @@ Route::post('/github/events', 'GithubEventsController@index')->name('github.even
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/notifications', 'HomeController@notifications')->name('notifications');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UsersController');
