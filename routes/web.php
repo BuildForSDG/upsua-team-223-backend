@@ -21,13 +21,10 @@ Route::get('login/github', 'Auth\LoginController@redirectToGithub')->name('login
 Route::get('login/github/callback', 'Auth\LoginController@handleGithubCallback');
 Route::post('/github/events', 'GithubEventsController@index')->name('github.events');
 
-<<<<<<< HEAD
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/notifications', 'HomeController@notifications')->name('notifications');
 
-=======
->>>>>>> d905bcbbc9596f550b9d85629dc5643907d49367
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
