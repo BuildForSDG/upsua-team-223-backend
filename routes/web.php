@@ -55,6 +55,8 @@ Route::middleware('admin')->group(function () {
 
     Route::resource('country', 'CountryController');
     Route::resource('locality', 'LocalityController');
+    //transactions
+    Route::resource('transaction', 'TransactionsController');
 });
 Route::middleware('basic')->group(function () {
 });

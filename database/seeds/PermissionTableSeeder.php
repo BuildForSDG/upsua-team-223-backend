@@ -32,6 +32,10 @@ class PermissionTableSeeder extends Seeder
            'locality-create',
            'locality-edit',
            'locality-delete',
+           'transaction-list',
+           'transaction-create',
+           'transaction-edit',
+           'transaction-delete',
         ];
 
 

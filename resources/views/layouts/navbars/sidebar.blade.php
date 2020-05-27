@@ -256,11 +256,13 @@
                     @endcan
                 </li>
 
+                @can('transaction-list')
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('transaction.index') }}">
                         <i class="ni ni-money-coins" style="color:#172b4d;"></i> {{ __('Transactions Management') }}
                     </a>
                 </li>
+                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link" href="#">
