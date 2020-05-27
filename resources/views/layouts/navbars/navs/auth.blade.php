@@ -3,22 +3,7 @@
     <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
-        <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-            <div class="form-group mb-0">
-                <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Search" type="text">
-                </div>
-            </div>
-        </form>
         <!-- User -->
-        @php
-            $user = \App\User::find(1);
-            $notifications = $user->notifications;
-        @endphp
 
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
@@ -29,15 +14,15 @@
                     <!-- Dropdown header -->
                     <div class="px-3 py-3">
                         <h6 class="text-sm text-muted m-0">
-                            You have 
-                            <strong class="text-primary">{{ $notifications->count() }}</strong> 
+                            You have
+                            <strong class="text-primary">{{ auth()->user()->notifications->count() }}</strong>
                             notifications.
                         </h6>
                     </div>
                     <!-- List group -->
                     <div class="list-group list-group-flush">
 
-                        @foreach ($notifications as $notification)
+                        @foreach (auth()->user()->notifications as $notification)
                             <a href="{{ route('notifications') }}" class="list-group-item list-group-item-action">
                                 <div class="row align-items-center">
 
@@ -55,7 +40,7 @@
 
                                     <div class="col ml--2">
                                         <div class="d-flex justify-content-between align-items-center">
-                                        
+
                                             <div>
                                                 <h4 class="mb-0 text-sm">{{ $data['subject'] }}</h4>
                                             </div>
@@ -74,7 +59,7 @@
                                 </div>
                             </a>
                         @endforeach
-                    
+
                     </div>
                     <!-- View all -->
                     <a href="{{ route('notifications') }}" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>

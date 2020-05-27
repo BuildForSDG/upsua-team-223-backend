@@ -65,17 +65,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="{{ __('Search') }}" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -98,13 +87,11 @@
                                 </a>
                             </li>
 
-                            @can('user-list')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('Users Management') }}
+                                <a class="nav-link" href="{{ route('notifications') }}">
+                                    {{ __('Notifications') }}
                                 </a>
                             </li>
-                            @endcan
                         </ul>
                     </div>
                 </li>
@@ -132,6 +119,12 @@
                     </div>
                 </li>
                 @basic
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-credit-card" style="color:#172b4d;"></i> {{ __('E-payment') }}
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-bank" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-bank">
                         <i class="ni ni-chart-bar-32 text-puple" style="color: #7e7586;"></i>
@@ -183,6 +176,22 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-other-service" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar--other-service">
+                        <i class="ni ni-box-2 text-puple" style="color: #777677;"></i>
+                        <span class="nav-link-text" style="color: #4987b9;">{{ __('My Other service') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-other-service">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 @endbasic
                 @business
                 <li class="nav-item">
@@ -192,15 +201,39 @@
                 </li>
                 @endbusiness
                 @partner
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-tie-bow" style="color:#172b4d;"></i> {{ __('My offers') }}
+                    </a>
+                </li>
                 @endpartner
                 @admin
+                @can('user-list')
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-us-manager" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-us-manager">
+                        <i class="ni ni-circle-08 text-puple" style="color: #7e7586;"></i>
+                        <span class="nav-link-text" style="color: #28442b;">{{ __('Users Management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-us-manager">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}">
+                                    {{ __('Users') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-zone" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-zone">
                         <i class="ni ni-pin-3 text-puple" style="color: #78ca2b;"></i>
                         <span class="nav-link-text" style="color: #58c21a;">{{ __('zone management') }}</span>
                     </a>
 
+
+                    @can('country-list')
                     <div class="collapse" id="navbar-zone">
                         <ul class="nav nav-sm flex-column">
                             @can('country-list')
@@ -211,13 +244,94 @@
                             </li>
                             @endcan
 
-                            @can('country-list')
+                            @can('locality-list')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('locality.index') }}">
                                     {{ __('locality management') }}
                                 </a>
                             </li>
                             @endcan
+                        </ul>
+                    </div>
+                    @endcan
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-money-coins" style="color:#172b4d;"></i> {{ __('Transactions Management') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-credit-card" style="color:#172b4d;"></i> {{ __('E-payment Management') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-m-bank" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-bank">
+                        <i class="ni ni-chart-bar-32 text-puple" style="color: #7e7586;"></i>
+                        <span class="nav-link-text" style="color: #3cd649;">{{ __('Bank Management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-m-bank">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-m-finance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-finance">
+                        <i class="ni ni-chart-pie-35 text-puple" style="color: #749938;"></i>
+                        <span class="nav-link-text" style="color: #a0a9dd;">{{ __('Finance Management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-m-finance">
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-m-insurance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-insurance">
+                        <i class="ni ni-badge text-puple" style="color: #312c35;"></i>
+                        <span class="nav-link-text" style="color: #0e227a;">{{ __('Insurance Management') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-m-insurance">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-m-other-service" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-other-service">
+                        <i class="ni ni-box-2 text-puple" style="color: #777677;"></i>
+                        <span class="nav-link-text" style="color: #4987b9;">{{ __('Management of other services') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-m-other-service">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('My choose') }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
