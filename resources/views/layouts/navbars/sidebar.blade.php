@@ -264,11 +264,13 @@
                 </li>
                 @endcan
 
+                @can('payment-list')
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('payment.index') }}">
                         <i class="ni ni-credit-card" style="color:#172b4d;"></i> {{ __('E-payment Management') }}
                     </a>
                 </li>
+                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-m-bank" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-bank">

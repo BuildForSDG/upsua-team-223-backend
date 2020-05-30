@@ -15,6 +15,15 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('method_accepted', ['in_out','in', 'out'])->default('in_out');
+            $table->integer('number')->unique()->nullable();
+            $table->string('description')->nullable();
+            $table->string('payment_img')->nullable();
+            $table->unsignedBigInteger('partner_account_id')->nullable();
+            $table->unsignedBigInteger('locality_id')->nullable();
+            $table->foreign('partner_account_id')->references('id')->on('partner_accounts')->onDelete('cascade');
+            $table->foreign('locality_id')->references('id')->on('localities')->onDelete('cascade');
             $table->timestamps();
         });
     }
