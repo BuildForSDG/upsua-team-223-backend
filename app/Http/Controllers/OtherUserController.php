@@ -169,6 +169,10 @@ class OtherUserController extends Controller
             $transaction->post_balance=$account->balance;
             $transaction->iso_4217_currency_code=$account->user->country->iso_4217_currency_code;
             $transaction->description='Debited an account by upsua';
+
+            if($account->balance-$request->amount<0){
+                return back()->withStatus(__('transaction not completed successfully null value'));
+            }
             $transaction->save();
 
             $account->balance-=$request->amount;

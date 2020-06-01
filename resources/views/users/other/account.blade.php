@@ -20,7 +20,12 @@
                     <div class="card-body">
 						<div class="card-body px-lg-7">
                             <div class="display-2 mt-2 mb-2">{{ $user->account->balance }}</div>
-                            <span class=" text-muted">currency : </span>
+                            <span class=" text-muted">
+                                currency :
+                                @if(isset($user->country))
+                                    {{ $user->country->iso_4217_currency_code }}
+                                @endif
+                            </span>
                             <form method="post" action="{{ route('users.account.type', $user) }}" autocomplete="off">
                                 @csrf
                                 @method('put')
