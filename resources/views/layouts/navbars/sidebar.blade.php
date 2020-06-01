@@ -120,7 +120,7 @@
                 </li>
                 @basic
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('users.payments') }}">
                         <i class="ni ni-credit-card" style="color:#172b4d;"></i> {{ __('E-payment') }}
                     </a>
                 </li>

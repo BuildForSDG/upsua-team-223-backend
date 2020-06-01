@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Payment;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,8 @@ class HomeController extends Controller
             return view('dashboard-admin');
         }
         // event(new UserRegistered(User::find(1)));
-        return view('dashboard-user');
+        $payments=Payment::all();
+        return view('dashboard-user',compact('payments'));
     }
 
     public function test()
