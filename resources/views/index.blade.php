@@ -1,3 +1,4 @@
+@@ -1,830 +0,0 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -5,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Universal Payment and Services United for All - Index</title>
+  <title>Universal Payment and Services United for All - Home</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -49,23 +50,6 @@
               <li><a href="#services">Services</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#team">Team</a></li>
-              <li class="drop-down"><a href="">Drop Down</a>
-                <ul>
-                  <li><a href="#">Drop Down 1</a></li>
-                  <li class="drop-down"><a href="#">Deep Drop Down</a>
-                    <ul>
-                      <li><a href="#">Deep Drop Down 1</a></li>
-                      <li><a href="#">Deep Drop Down 2</a></li>
-                      <li><a href="#">Deep Drop Down 3</a></li>
-                      <li><a href="#">Deep Drop Down 4</a></li>
-                      <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Drop Down 2</a></li>
-                  <li><a href="#">Drop Down 3</a></li>
-                  <li><a href="#">Drop Down 4</a></li>
-                </ul>
-              </li>
               <li><a href="#contact">Contact</a></li>
 
             </ul>
@@ -84,8 +68,8 @@
     <div class="container-fluid" data-aos="fade-up">
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Bettter Digital Experience With upsua</h1>
-          <h2>We are team of Universal Payment and Services United for All</h2>
+          <h1>UPSUA</h1>
+          <h2>Universal Payment Services United for All</h2>
           <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
         </div>
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
@@ -107,15 +91,16 @@
             <img src="{{ asset('assets/img/about.jpg') }}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>UPSUA is a universal payment system and a mobile bank</h3>
             <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            this system aims to solve the problems of access to financial services and increase financial inclusion.
             </p>
             <ul>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="icofont-check-circled"></i> Universality of payment, due to its independence from the industry, the bank, microfinance and the telecommunications operator.</li>
+              <li><i class="icofont-check-circled"></i> Access to basic financial services for people in the informal sector, which is not taken into account by African Fintechs.</li>
+              <li><i class="icofont-check-circled"></i> The mobility of the account, having access to your account, and made withdrawal of deposits to continue all its financial operations no matter where we are in the world is a major innovation.</li>
+              <li><i class="icofont-check-circled"></i> The affordable and almost free costs for the disadvantaged, in order to bank the populations as much as possible. Opening an account on upsua is free.</li>
+            
             </ul>
 			@auth
 				<a href="{{ url('/home') }}" class="read-more">Dashboard</a></p>
@@ -166,7 +151,7 @@
 
         <div class="section-title">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Our solution is a mobile and universal financial service. Our aim is to combine Mobile network operator payment system (or e-wallet), banks services and other finance services provider in the same system, so that any persons with a smartphone or with a simple phone, with internet or without internet can access financial service, can open bank account our make bank operation, it can buy/sell or make transaction anywhere in the world.</p>
         </div>
 
         <div class="row">
@@ -178,8 +163,8 @@
                 </svg>
                 <i class="bx bxl-dribbble"></i>
               </div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">Bank Management</a></h4>
+              <p>bank management refers to the process of managing the Bank’s statutory activity. Bank management is characterized by the specific object of management - financial relations connected with banking activities and other relations, also connected with implementation of management functions in banking.</p>
             </div>
           </div>
 
@@ -191,8 +176,8 @@
                 </svg>
                 <i class="bx bx-file"></i>
               </div>
-              <h4><a href="">Sed Perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="">Finance Management</a></h4>
+              <p>Financial Management means planning, organizing, directing and controlling the financial activities such as procurement and utilization of funds</p>
             </div>
           </div>
 
@@ -204,8 +189,8 @@
                 </svg>
                 <i class="bx bx-tachometer"></i>
               </div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4><a href="">Insurance Management</a></h4>
+              <p>Insurance management is a non-technical term used to describe insurance brokers and providers and the insurance products they offer buyers. Insurance providers sell various insurance solutions to business and consumer buyers.</p>
             </div>
           </div>
 
@@ -217,8 +202,8 @@
                 </svg>
                 <i class="bx bx-layer"></i>
               </div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4><a href="">Management of E-payments</a></h4>
+              <p>An e-payment system is a way of making transactions or paying for goods and services through an electronic medium, without the use of checks or cash. It’s also called an electronic payment system or online payment system.</p>
             </div>
           </div>
 
@@ -230,7 +215,7 @@
                 </svg>
                 <i class="bx bx-slideshow"></i>
               </div>
-              <h4><a href="">Dele Cardo</a></h4>
+              <h4><a href="">User Management</a></h4>
               <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
             </div>
           </div>
@@ -243,7 +228,7 @@
                 </svg>
                 <i class="bx bx-arch"></i>
               </div>
-              <h4><a href="">Divera Don</a></h4>
+              <h4><a href="">Management of Others Services</a></h4>
               <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
             </div>
           </div>
@@ -253,13 +238,15 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Features Section ======= -->
+    <!-- ======= Features Section 
     <section id="features" class="features">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>Features</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>We solve the problem of financial inclusion for those who lives in rural area, for those who working on informal sector, so that they can make any bank or financial operation.
+The solution give possibility when you have mobile account for send/receive money from mobile Network Operator, to also open an account to our platform, and our platform give possibily to send/receive money  to/from anywhere in the world, access to financial services(Bank/MFI account, e-wallet, insurance services…). The platform will allow user to sell/buy to/from anywhere in the world, deposit/ withdrawal money from anywhere
+.</p>
         </div>
 
         <div class="row">
@@ -290,10 +277,10 @@
           </div>
         </div>
 
-      </div>
+      </div>======= -->
     </section><!-- End Features Section -->
 
-    <!-- ======= Testimonials Section ======= -->
+    <!-- ======= Testimonials Section 
     <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -361,10 +348,10 @@
 
         </div>
 
-      </div>
+      </div>======= -->
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= Portfolio Section 
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
 
@@ -514,10 +501,10 @@
 
         </div>
 
-      </div>
+      </div>======= -->
     </section><!-- End Portfolio Section -->
 
-    <!-- ======= Pricing Section ======= -->
+    <!-- ======= Pricing Section 
     <section id="pricing" class="pricing section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -599,10 +586,10 @@
 
         </div>
 
-      </div>
+      </div>======= -->
     </section><!-- End Pricing Section -->
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
+    <!-- ======= Frequently Asked Questions Section 
     <section id="faq" class="faq">
       <div class="container" data-aos="fade-up">
 
@@ -661,7 +648,7 @@
           </ul>
         </div>
 
-      </div>
+      </div>======= -->
     </section><!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Contact Section ======= -->
@@ -670,7 +657,7 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p></p>
         </div>
 
         <div class="row">
@@ -678,7 +665,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>Yaounde, Cameroon</p>
             </div>
           </div>
 
@@ -686,7 +673,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>contact@example.com</p>
+              <p>upsua@upsua.com</p>
             </div>
           </div>
 
@@ -694,7 +681,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>+237 558 955 488 355</p>
             </div>
           </div>
 
@@ -750,13 +737,13 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Techie</h3>
+            <h3>UPSUA</h3>
             <p>
               A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Yaounde<br>
+              Cameroon<br><br>
+              <strong>Phone:</strong> +237 558 955 488 55<br>
+              <strong>Email:</strong> upsua@upsua.com<br>
             </p>
           </div>
 
@@ -784,7 +771,7 @@
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <p></p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
@@ -799,14 +786,14 @@
       <div class="copyright-wrap d-md-flex py-4">
         <div class="mr-md-auto text-center text-md-left">
           <div class="copyright">
-            &copy; Copyright <strong><span>Techie</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>UPSUA</span></strong>. All Rights Reserved
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/techie-free-skin-bootstrap-3/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="">upsua Team</a>
           </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
