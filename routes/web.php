@@ -64,6 +64,12 @@ Route::middleware('admin')->group(function () {
 
     //payment cost
     Route::resource('paymentcost', 'PaymentCostController');
+
+    //other service
+    Route::resource('otherservice', 'OtherServiceController');
+
+    //other services cost
+    Route::resource('otherservicecost', 'OtherServiceCostController');
 });
 Route::middleware('basic')->group(function () {
     Route::get('methods/payments', 'UserPaymentController@userPayments')->name('users.payments');

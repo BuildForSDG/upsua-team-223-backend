@@ -15,7 +15,11 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    @if(!empty(auth()->user()->cni_img))
+                                    <img src="{{asset('/assets/img/profiles/'.auth()->user()->cni_img)}}" class="rounded-circle">
+                                    @else
+                                    <img src="{{ asset('argon') }}/img/brand/favicon.png" class="rounded-circle">
+                                    @endif
                                 </a>
                             </div>
                         </div>
@@ -72,7 +76,7 @@
                             <h3 class="col-12 mb-0">{{ __('Edit Profile') }}</h3>
                         </div>
                     </div>
-                    <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
+                    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" autocomplete="off">
                     <div class="card-body">
                             @csrf
                             @method('put')
@@ -258,6 +262,17 @@
                                 @if ($errors->has('locality'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('locality') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group{{ $errors->has('cni_img') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-cni_img">{{ __('Profile image') }}</label>
+                                <input type="file" name="cni_ig" id="input-cni_img" class="form-control form-control-alternative{{ $errors->has('cni_img') ? ' is-invalid' : '' }}" placeholder="{{ __('Profile image') }}" value="{{ old('cni_img') }}" autofocus>
+
+                                @if ($errors->has('cni_img'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('cni_img') }}</strong>
                                     </span>
                                 @endif
                             </div>

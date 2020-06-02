@@ -44,6 +44,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+        if(!empty($request->cni_ig)){
+            $path = 'profiles';
+            $fileName = uploadImage($request->cni_ig, $path);
+            auth()->user()->update($request->merge(['cni_img' => $fileName])->all());
+            return back()->withStatus(__('Profile successfully updated.'));
+        }
         auth()->user()->update($request->all());
 
         return back()->withStatus(__('Profile successfully updated.'));

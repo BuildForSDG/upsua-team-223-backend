@@ -14,7 +14,11 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            @if(!empty(auth()->user()->cni_img))
+                                <img alt="Image {{ auth()->user()->name }}" src="{{asset('/assets/img/profiles/'.auth()->user()->cni_img)}}">
+                            @else
+                                <img alt="Image {{ auth()->user()->name }}" src="{{ asset('argon') }}/img/brand/favicon.png">
+                            @endif
                         </span>
                     </div>
                 </a>
@@ -323,22 +327,13 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#navbar-m-other-service" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-other-service">
-                        <i class="ni ni-box-2 text-puple" style="color: #777677;"></i>
-                        <span class="nav-link-text" style="color: #4987b9;">{{ __('Management of other services') }}</span>
+                @can('other-service-list')
+				<li class="nav-item">
+                    <a class="nav-link" href="{{ route('otherservice.index') }}">
+                        <i class="ni ni-box-2 text-puple" style="color: #777677;"></i> {{ __('Management of other services') }}
                     </a>
-
-                    <div class="collapse" id="navbar-m-other-service">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                @endcan
 
                 @can('role-list')
 				<li class="nav-item">

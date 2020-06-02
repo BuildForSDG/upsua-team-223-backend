@@ -584,7 +584,7 @@
                                         </div>
                                         <p class="mt-3 mb-0 text-sm">
                                             <span class="text-white mr-2"><i class="fa fa-arrow-up"></i></span>
-                                            <span class="text-nowrap text-light">Since last month</span>
+                                            <span class="text-nowrap text-light">Since {{ auth()->user()->created_at->diffForHumans()}}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -647,7 +647,7 @@
                                         {{ $transaction->amount }} {{ $transaction->iso_4217_currency_code }}
                                     </td>
                                     <td>
-                                        {{ $transaction->created_at }}
+                                        {{ $transaction->created_at->diffForHumans() }}
                                     </td>
                                 </tr>
                                 @endforeach

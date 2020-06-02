@@ -44,6 +44,14 @@ class PermissionTableSeeder extends Seeder
            'payment-cost-create',
            'payment-cost-edit',
            'payment-cost-delete',
+           'other-service-list',
+           'other-service-create',
+           'other-service-edit',
+           'other-service-delete',
+           'other-service-cost-list',
+           'other-service-cost-create',
+           'other-service-cost-edit',
+           'other-service-cost-delete',
         ];
 
 

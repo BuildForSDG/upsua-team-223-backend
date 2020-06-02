@@ -68,7 +68,11 @@
                                             <div class="d-flex w-100 justify-content-between">
                                                 <div>
                                                     <div class="d-flex w-100 align-items-center">
+                                                        @if(!empty(auth()->user()->cni_img))
+                                                        <img src="{{asset('/assets/img/profiles/'.$thread->creator()->cni_img)}}" alt="Image placeholder" class="avatar avatar-xs mr-2" />
+                                                        @else
                                                         <img src="{{ asset('argon') }}/img/brand/favicon.png" alt="Image placeholder" class="avatar avatar-xs mr-2" />
+                                                        @endif
                                                         <h5 class="mb-1">{{ $thread->creator()->name }}</h5>
                                                     </div>
                                                 </div>
