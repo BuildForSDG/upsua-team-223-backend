@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Payment;
+use App\OtherService;
 
 class HomeController extends Controller
 {
@@ -33,8 +34,9 @@ class HomeController extends Controller
             return view('dashboard-admin');
         }
         // event(new UserRegistered(User::find(1)));
+        $otherServices=OtherService::all();
         $payments=Payment::all();
-        return view('dashboard-user',compact('payments'));
+        return view('dashboard-user',compact('payments','otherServices'));
     }
 
     public function test()

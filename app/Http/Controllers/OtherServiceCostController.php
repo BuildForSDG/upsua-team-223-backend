@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\OtherServiceCost;
 use App\OtherService;
+use App\Http\Requests\OtherServiceCostRequest;
 use Illuminate\Http\Request;
+use DB;
 
 class OtherServiceCostController extends Controller
 {
@@ -18,7 +20,7 @@ class OtherServiceCostController extends Controller
         $this->middleware('permission:other-service-cost-list|other-service-cost-create|other-service-cost-edit|other-service-cost-delete', ['only' => ['index','store']]);
         $this->middleware('permission:other-service-cost-create', ['only' => ['create','store']]);
         $this->middleware('permission:other-service-cost-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:other-service-cost-cost-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:other-service-cost-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -46,7 +48,7 @@ class OtherServiceCostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OtherServiceCostRequest $request)
     {
         DB::beginTransaction();
         $cost=new OtherServiceCost();
@@ -112,6 +114,6 @@ class OtherServiceCostController extends Controller
     {
         $otherServiceCost=OtherServiceCost::find($otherServiceCost);
         $otherServiceCost->delete();
-        return redirect()->route('otherService.show',$otherServiceCost->otherService->id)->withStatus(__('Service Cost deleted successfully.'));
+        return redirect()->route('otherservice.show',$otherServiceCost->otherService->id)->withStatus(__('Service Cost deleted successfully.'));
     }
 }

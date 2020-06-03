@@ -181,20 +181,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#navbar-other-service" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar--other-service">
-                        <i class="ni ni-box-2 text-puple" style="color: #777677;"></i>
-                        <span class="nav-link-text" style="color: #4987b9;">{{ __('My Other service') }}</span>
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-box-2 text-puple" style="color:#172b4d;"></i> {{ __('Other Services') }}
                     </a>
-
-                    <div class="collapse" id="navbar-other-service">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 @endbasic
                 @business

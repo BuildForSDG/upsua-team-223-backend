@@ -461,7 +461,7 @@
                                                                 </div>
                                                             </div>
                                                             </div>
-                                                        <a href="{{ route('method.payments',$p->id) }}" data-toggle="modal" data-target="#localPayementModal">
+                                                        <a href="#" data-toggle="modal" data-target="#localPayementModal">
                                                             <div class="card card-stats mb-4 mb-xl-0">
                                                                 <div class="card-body">
                                                                     <div class="row">
@@ -666,9 +666,8 @@
                                 <!-- Title -->
                                 <h5 class="h3 mb-0">Other services</h5>
                             </div>
-                            <!-- Card search -->
+                            <!-- Card search
                             <div class="card-header py-0">
-                                <!-- Search form -->
                                 <form>
                                     <div class="form-group mb-0">
                                         <div class="input-group input-group-lg input-group-flush">
@@ -681,71 +680,33 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div>-->
                             <!-- Card body -->
                             <div class="card-body">
                                 <!-- List group -->
                                 <ul class="list-group list-group-flush list my--3">
+                                    @foreach($otherServices as $service)
                                     <li class="list-group-item px-0">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <a href="#" class="avatar rounded-circle">
-                                                    <img alt="Image placeholder" src="{{ asset('argon') }}/img/brand/favicon.png">
+                                                    <img alt="Image {{ $service->name }}" src="{{asset('/assets/img/services/'.$service->img)}}">
                                                 </a>
                                             </div>
                                             <div class="col ml--2">
                                                 <h4 class="mb-0">
-                                                    <a href="#!">Electricity bills</a>
+                                                    <a href="#!">{{ $service->name }}</a>
                                                 </h4>
                                                 <span class="text-success">●</span>
                                                 <small>Available</small>
                                             </div>
                                             <div class="col-auto">
-                                                <button type="button" class="btn btn-sm btn-primary">see more</button>
+                                                <a href="#" class="btn btn-sm btn-primary">see more</a>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="list-group-item px-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <!-- Avatar -->
-                                                <a href="#" class="avatar rounded-circle">
-                                                    <img alt="Image placeholder" src="{{ asset('argon') }}/img/brand/favicon.png">
-                                                </a>
-                                            </div>
-                                            <div class="col ml--2">
-                                                <h4 class="mb-0">
-                                                    <a href="#!">TV / internet</a>
-                                                </h4>
-                                                <span class="text-warning">●</span>
-                                                <small>Unavailable</small>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button type="button" class="btn btn-sm btn-primary">see more</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <!-- Avatar -->
-                                                <a href="#" class="avatar rounded-circle">
-                                                    <img alt="Image placeholder" src="{{ asset('argon') }}/img/brand/favicon.png">
-                                                </a>
-                                            </div>
-                                            <div class="col ml--2">
-                                                <h4 class="mb-0">
-                                                    <a href="#!">Water bills</a>
-                                                </h4>
-                                                <span class="text-success">●</span>
-                                                <small>Available</small>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button type="button" class="btn btn-sm btn-primary">see more</button>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

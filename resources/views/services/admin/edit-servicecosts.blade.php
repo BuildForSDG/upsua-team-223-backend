@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Payment Costs Management')])
+@extends('layouts.app', ['title' => __('Service Costs Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Edit Payment Costs')])
+    @include('users.partials.header', ['title' => __('Edit Service Costs')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,35 +10,23 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Payment costs management') }}</h3>
+                                <h3 class="mb-0">{{ __('Service costs management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('payment.show',$cost->payment->id) }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
+                                <a href="{{ route('otherservice.show',$cost->otherService->id) }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('paymentcost.update', $cost) }}" autocomplete="off">
+                        <form method="post" action="{{ route('otherservicecost.update', $cost) }}" autocomplete="off">
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('Payments cost information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Other service cost information') }}</h6>
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
-									<label class="form-control-label" for="input-type">{{ __('Type accepted') }}</label>
-									<select name="type" class="form-control">
-										   <option @if($cost->type=='out') selected @endif value="out">Out</option>
-										   <option @if($cost->type=='in') selected @endif value="in">In</option>
-									</select>
-									@if ($errors->has('type'))
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $errors->first('type') }}</strong>
-										</span>
-									@endif
-								</div>
                                 <div class="form-group{{ $errors->has('min') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-min">{{ __('Min value') }}</label>
-                                    <input type="hidden" value="{{ $cost->payment->id }}" name="payment_id">
+                                    <input type="hidden" value="{{ $cost->otherService->id }}" name="other_service_id">
                                     <input type="number" name="min" id="input-min" class="form-control form-control-alternative{{ $errors->has('min') ? ' is-invalid' : '' }}" placeholder="{{ __('Min value') }}" value="{{ $cost->min_val }}" required="true">
 
                                     @if ($errors->has('min'))

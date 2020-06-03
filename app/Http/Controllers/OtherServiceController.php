@@ -76,8 +76,9 @@ class OtherServiceController extends Controller
      * @param  \App\OtherService  $otherService
      * @return \Illuminate\Http\Response
      */
-    public function show(OtherService $otherService)
+    public function show($otherService)
     {
+        $otherService=OtherService::find($otherService);
         $localities = Locality::all();
         $partners = PartnerAccount::all();
         $costs= $otherService->costs;

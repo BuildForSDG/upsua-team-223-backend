@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Payments Management')])
+@extends('layouts.app', ['title' => __('Services Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('show Payment method')])
+    @include('users.partials.header', ['title' => __('show Service')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -20,10 +20,10 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Payment') }}</h3>
+                                <h3 class="mb-0">{{ __('Service') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('payment.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
+                                <a href="{{ route('otherservice.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
                             </div>
                         </div>
                     </div>
@@ -32,54 +32,47 @@
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Name:</strong>
-									{{ $payment->name }}
-									@if(isset($payment->payment_img))<img class="w-30 h-30" width="30" src="{{asset('/assets/img/payments/'.$payment->payment_img)}}">@endif
+									{{ $otherService->name }}
+									@if(isset($otherService->img))<img class="w-30 h-30" width="30" src="{{asset('/assets/img/services/'.$otherService->img)}}">@endif
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Description:</strong>
-									{{ $payment->description }}
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Method Accepted:</strong>
-									{{ $payment->method_accepted }}
+									{{ $otherService->description }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Unique Number:</strong>
-									{{ $payment->number }}
+									{{ $otherService->number }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
-									<strong>Payment:</strong>
-									{{ $payment->partner->user->name }}
+									<strong>Partner:</strong>
+									{{ $otherService->partner->user->name }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Locality:</strong>
-									{{ $payment->locality->name }}
+									{{ $otherService->locality->name }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Creation date:</strong>
-									{{ $payment->created_at->format('d/m/Y H:i') }}
+									{{ $otherService->created_at->format('d/m/Y H:i') }}
 								</div>
 							</div>
                         </div>
-                        @can('payment-cost-list')
+                        @can('other-service-cost-list')
                         <div class="table-responsive">
-                            <h6 class="heading-small text-muted mb-4">{{ __('Payments Cost information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Other service Cost information') }}</h6>
                             <table class="table align-items-center table-flush"  id="datatable-buttons">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">{{ __('Type') }}</th>
                                         <th scope="col">{{ __('Min value') }}</th>
                                         <th scope="col">{{ __('Max value') }}</th>
                                         <th scope="col">{{ __('Amount') }}</th>
@@ -89,7 +82,6 @@
                                 <tbody>
                                     @foreach ($costs as $cost)
                                         <tr>
-                                            <td>{{ $cost->type }}</td>
                                             <td>{{ $cost->min_val }}</td>
                                             <td>{{ $cost->max_val }}</td>
                                             <td>{{ $cost->amount }}</td>
@@ -98,16 +90,16 @@
                                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
-                                                    @can('payment-cost-list')
+                                                    @can('other-service-cost-list')
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <form action="{{ route('paymentcost.destroy', $cost) }}" method="post">
+                                                                <form action="{{ route('otherservicecost.destroy', $cost) }}" method="post">
                                                                     @csrf
                                                                     @method('delete')
-                                                                        @can('payment-cost-edit')
-                                                                        <a class="dropdown-item" href="{{ route('paymentcost.edit',$cost->id) }}">{{ __('Edit') }}</a>
+                                                                        @can('other-service-cost-edit')
+                                                                        <a class="dropdown-item" href="{{ route('otherservicecost.edit',$cost->id) }}">{{ __('Edit') }}</a>
                                                                         @endcan
-                                                                    @can('payment-cost-delete')
-                                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("are you sure you want to delete the payment cost?") }}') ? this.parentElement.submit() : ''">
+                                                                    @can('other-service-cost-delete')
+                                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("are you sure you want to delete the service cost?") }}') ? this.parentElement.submit() : ''">
                                                                         {{ __('Remove') }}
                                                                     </button>
                                                                     @endcan
@@ -123,25 +115,13 @@
                         </div>
                         @endcan
                         <br>
-                        @can('payment-cost-create')
-                        <form method="post" action="{{ route('paymentcost.store') }}" enctype="multipart/form-data" autocomplete="off">
-                            <h6 class="heading-small text-muted mb-4">{{ __('add new Payments Cost') }}</h6>
+                        @can('other-service-cost-create')
+                        <form method="post" action="{{ route('otherservicecost.store') }}" enctype="multipart/form-data" autocomplete="off">
+                            <h6 class="heading-small text-muted mb-4">{{ __('add new service Cost') }}</h6>
                                 @csrf
-                                <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
-									<label class="form-control-label" for="input-type">{{ __('Type accepted') }}</label>
-									<select name="type" class="form-control">
-										   <option selected value="out">out</option>
-										   <option value="in">In</option>
-									</select>
-									@if ($errors->has('type'))
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $errors->first('type') }}</strong>
-										</span>
-									@endif
-								</div>
                                 <div class="form-group{{ $errors->has('min') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-min">{{ __('Min value') }}</label>
-                                    <input type="hidden" value="{{ $payment->id }}" name="payment_id">
+                                    <input type="hidden" value="{{ $otherService->id }}" name="other_service_id">
                                     <input type="number" name="min" id="input-min" class="form-control form-control-alternative{{ $errors->has('min') ? ' is-invalid' : '' }}" placeholder="{{ __('Min value') }}" value="{{ old('min') }}" required="true">
 
                                     @if ($errors->has('min'))
