@@ -181,7 +181,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('users.service') }}">
                         <i class="ni ni-box-2 text-puple" style="color:#172b4d;"></i> {{ __('Other Services') }}
                     </a>
                 </li>

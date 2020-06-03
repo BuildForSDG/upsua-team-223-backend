@@ -75,6 +75,8 @@ Route::middleware('basic')->group(function () {
     Route::get('methods/payments', 'UserPaymentController@userPayments')->name('users.payments');
     Route::get('methods/{id}/payments', 'UserPaymentController@methodPayment')->name('method.payments');
     Route::put('payments/{method}/out', 'UserPaymentController@paymentOutMethod')->name('payment.method.out');
+    Route::get('methods/service', 'UserServiceController@userService')->name('users.service');
+    Route::get('methods/{id}/service', 'UserServiceController@methodService')->name('method.services');
 });
 Route::middleware('business')->group(function () {
 });

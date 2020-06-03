@@ -702,7 +702,7 @@
                                                 <small>Available</small>
                                             </div>
                                             <div class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary">see more</a>
+                                                <a href="{{ route('method.services',$service->id) }}" class="btn btn-sm btn-primary">see more</a>
                                             </div>
                                         </div>
                                     </li>
