@@ -15,6 +15,14 @@ class CreateBanksTable extends Migration
     {
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
+			$table->string('name');
+			$table->integer('number')->unique()->nullable();
+            $table->string('description')->nullable();
+            $table->string('img')->nullable();
+            $table->unsignedBigInteger('partner_account_id')->nullable();
+            $table->unsignedBigInteger('locality_id')->nullable();
+            $table->foreign('partner_account_id')->references('id')->on('partner_accounts')->onDelete('cascade');
+            $table->foreign('locality_id')->references('id')->on('localities')->onDelete('cascade');
             $table->timestamps();
         });
     }

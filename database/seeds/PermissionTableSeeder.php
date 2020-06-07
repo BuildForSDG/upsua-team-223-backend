@@ -52,6 +52,14 @@ class PermissionTableSeeder extends Seeder
            'other-service-cost-create',
            'other-service-cost-edit',
            'other-service-cost-delete',
+		   'bank-list',
+           'bank-create',
+           'bank-edit',
+           'bank-delete',
+           'bank-cost-list',
+           'bank-cost-create',
+           'bank-cost-edit',
+           'bank-cost-delete',
         ];
 
 
