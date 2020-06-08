@@ -1,3 +1,4 @@
+@@ -1,830 +0,0 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -5,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Universal Payment Services United for All - Home</title>
+  <title>Universal Payment and Services United for All - Home</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -47,8 +48,7 @@
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
-              <!-- <li><a href="#portfolio">Portfolio</a></li>-->
-              <li><a href="#team">Blog</a></li>
+              <li><a href="#portfolio">Blog</a></li>
               <li><a href="#contact">Contact</a></li>
 
             </ul>
@@ -215,7 +215,7 @@
                 <i class="bx bx-slideshow"></i>
               </div>
               <h4><a href="">User Management</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+              <p>The platform has three types of users: the basic user, partner user and business user. Each user has specific actions</p>
             </div>
           </div>
 
@@ -228,7 +228,9 @@
                 <i class="bx bx-arch"></i>
               </div>
               <h4><a href="">Management of Others Services</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+              <p>With UPSUA, no more long lines in agencies to pay bills, do it online safely at home. UPSUA gives you the opportunity to be able to pay your electricity, water, gas, canal + bills.
+
+</p>
             </div>
           </div>
 
@@ -674,7 +676,7 @@ The solution give possibility when you have mobile account for send/receive mone
               <h3>Email Us</h3>
               <p>upsua@upsua.com</p>
             </div>
-          </div>
+          </div> <br>
 
           <div class="col-lg-3 col-md-6">
             <div class="info-box  mb-4">
