@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bank extends Model
+class Finance extends Model
 {
     protected $fillable = [
         'name','description','img','number','partner_account_id','locality_id',
     ];
 
     public function costs(){
-        return $this->hasMany('App\\BankCost','bank_id','id');
+        return $this->hasMany('App\\FinanceCost','finance_id','id');
     }
 
     public function partner(){
@@ -24,6 +24,6 @@ class Bank extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'user_banks');
+        return $this->belongsToMany(User::class, 'user_finances');
     }
 }

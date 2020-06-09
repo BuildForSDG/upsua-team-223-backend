@@ -70,12 +70,18 @@ Route::middleware('admin')->group(function () {
 
     //other services cost
     Route::resource('otherservicecost', 'OtherServiceCostController');
-	
+
 	//bank
     Route::resource('bank', 'BankController');
-	
+
 	//bank cost
     Route::resource('bankcost', 'BankCostController');
+
+    //Finance
+    Route::resource('finance', 'FinanceController');
+
+	//Finance cost
+    Route::resource('financecost', 'FinanceCostController');
 });
 Route::middleware('basic')->group(function () {
     Route::get('methods/payments', 'UserPaymentController@userPayments')->name('users.payments');
@@ -83,6 +89,10 @@ Route::middleware('basic')->group(function () {
     Route::put('payments/{method}/out', 'UserPaymentController@paymentOutMethod')->name('payment.method.out');
     Route::get('methods/service', 'UserServiceController@userService')->name('users.service');
     Route::get('methods/{id}/service', 'UserServiceController@methodService')->name('method.services');
+    Route::get('methods/bank', 'UserBankController@userBank')->name('users.bank');
+    Route::get('methods/{id}/bank', 'UserBankController@methodBank')->name('method.bank');
+    Route::get('methods/finance', 'UserFinanceController@userBank')->name('users.finance');
+    Route::get('methods/{id}/bank', 'UserFinanceController@methodBank')->name('method.finance');
 });
 Route::middleware('business')->group(function () {
 });

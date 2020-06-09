@@ -60,6 +60,14 @@ class PermissionTableSeeder extends Seeder
            'bank-cost-create',
            'bank-cost-edit',
            'bank-cost-delete',
+           'finance-list',
+           'finance-create',
+           'finance-edit',
+           'finance-delete',
+           'finance-cost-list',
+           'finance-cost-create',
+           'finance-cost-edit',
+           'finance-cost-delete',
         ];
 
 

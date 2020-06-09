@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\BankCost;
-use App\OtherService;
-use App\Http\Requests\BankCostRequest;
+use App\FinanceCost;
+use App\Finance;
+use App\Http\Requests\FinanceCostRequest;
 use Illuminate\Http\Request;
 use DB;
 
-class BankCostController extends Controller
+class FinanceCostController extends Controller
 {
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function __construct()
     {
-        $this->middleware('permission:bank-cost-list|bank-cost-create|bank-cost-edit|bank-cost-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:bank-cost-create', ['only' => ['create','store']]);
-        $this->middleware('permission:bank-cost-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:bank-cost-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:finance-cost-list|finance-cost-create|finance-cost-edit|finance-cost-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:finance-cost-create', ['only' => ['create','store']]);
+        $this->middleware('permission:finance-cost-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:finance-cost-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -48,26 +48,26 @@ class BankCostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BankCostRequest $request)
+    public function store(FinanceCostRequest $request)
     {
         DB::beginTransaction();
-        $cost=new BankCost();
+        $cost=new FinanceCost();
         $cost->min_val=$request->min;
         $cost->max_val=$request->max;
         $cost->amount=$request->amount;
-        $cost->bank_id=$request->bank_id;
+        $cost->finance_id=$request->finance_id;
         $cost->save();
         DB::commit();
-        return back()->withStatus(__('Bank cost successfully created.'));
+        return back()->withStatus(__('Finance cost successfully created.'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BankCost  $bankCost
+     * @param  \App\FinanceCost  $financeCost
      * @return \Illuminate\Http\Response
      */
-    public function show(BankCost $bankCost)
+    public function show(FinanceCost $financeCost)
     {
         //
     }
@@ -75,45 +75,45 @@ class BankCostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BankCost  $bankCost
+     * @param  \App\FinanceCost  $financeCost
      * @return \Illuminate\Http\Response
      */
-    public function edit($bank_cost_id)
+    public function edit($finance_cost_id)
     {
-        $cost=BankCost::find($bank_cost_id);
-        return view('banks.admin.edit-bankcosts', compact('cost'));
+        $cost=FinanceCost::find($finance_cost_id);
+        return view('finances.admin.edit-financecosts', compact('cost'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BankCost  $bankCost
+     * @param  \App\FinanceCost  $financeCost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $bank_cost_id)
+    public function update(Request $request, $finance_cost_id)
     {
         DB::beginTransaction();
-        $cost=BankCost::find($bank_cost_id);
+        $cost=FinanceCost::find($finance_cost_id);
         $cost->min_val=$request->min;
         $cost->max_val=$request->max;
         $cost->amount=$request->amount;
-        $cost->bank_id=$request->bank_id;
+        $cost->finance_id=$request->finance_id;
         $cost->save();
         DB::commit();
-        return redirect()->route('bank.show',$cost->bank->id)->withStatus(__('Bank cost successfully updated.'));
+        return redirect()->route('finance.show',$cost->finance->id)->withStatus(__('Finance cost successfully updated.'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BankCost  $bankCost
+     * @param  \App\FinanceCost  $financeCost
      * @return \Illuminate\Http\Response
      */
-    public function destroy($bank_cost_id)
+    public function destroy($finance_cost_id)
     {
-        $cost=BankCost::find($bank_cost_id);
+        $cost=FinanceCost::find($finance_cost_id);
         $cost->delete();
-        return redirect()->route('bank.show',$cost->bank->id)->withStatus(__('Bank Cost deleted successfully.'));
+        return redirect()->route('finance.show',$cost->bank->id)->withStatus(__('Finance Cost deleted successfully.'));
     }
 }

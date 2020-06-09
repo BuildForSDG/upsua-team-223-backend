@@ -15,33 +15,65 @@
                                                 <h6 class="h2 text-default text-center d-inline-block mb-0">International Services</h6>
                                                 <div class="row">
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <a href="#" data-toggle="modal" data-target="#internationalbanqueModal">
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="internationalbanqueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="internationalbanqueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog" role="document">
                                                                 <div class="modal-content">
-                                                                  <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Bank method</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                      <span aria-hidden="true">&times;</span>
+                                                                    <span aria-hidden="true">&times;</span>
                                                                     </button>
-                                                                  </div>
-                                                                  <div class="modal-body">
-                                                                    ...
-                                                                  </div>
-                                                                  <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                                  </div>
                                                                 </div>
-                                                              </div>
+                                                                <div class="modal-body">
+                                                                    <!-- ici -->
+                                                                    <div class="header-body">
+                                                                        <!-- Card stats -->
+                                                                        <div class="row">
+
+                                                                            @foreach($banks as $b)
+                                                                            <div class="col-xl-6 col-lg-12 pt-1">
+                                                                                <div class="card card-stats mb-1 mb-xl-0">
+                                                                                    <a href="{{ route('method.bank',$b->id) }}">
+                                                                                    <div class="card-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <h5 class="card-title text-uppercase text-muted mb-0">{{$b->name}}</h5>
+                                                                                                <span class="h6 font-weight-bold mb-0">{{$b->description}}</span>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <div class="icon icon-shape rounded-circle shadow">
+                                                                                                    <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/banks/'.$b->img)}}">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                                                                            <span class="text-info mr-2"><i class="fas fa-arrow-down"></i> Infos: </span>
+                                                                                            <span class="text-nowrap">Clic here</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ici -->
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                                </div>
                                                             </div>
+                                                        </div>
+                                                        <a href="#" data-toggle="modal" data-target="#internationalbanqueModal">
                                                             <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <h5 class="card-title text-uppercase text-muted mb-0">bank</h6>
-                                                                        <span class="h5 font-weight-bold mb-0">Subscribed</span>
+                                                                        <span class="h5 font-weight-bold mb-0">available</span>
                                                                     </div>
                                                                     <div class="col-auto">
                                                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -50,8 +82,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 1 </span>
-                                                                    <span class="text-nowrap">Western Union</span>
+                                                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>@if(!empty($banks)) {{ $banks->count() }} @else 0 @endif</span>
+                                                                    <span class="text-nowrap">Clic here</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -84,7 +116,7 @@
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <h6 class="card-title text-uppercase text-muted mb-0">Finance</h6>
-                                                                        <span class="h6 font-weight-bold mb-0">Not subscribed</span>
+                                                                        <span class="h6 font-weight-bold mb-0">available</span>
                                                                     </div>
                                                                     <div class="col-auto">
                                                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -281,20 +313,52 @@
                                                 <h6 class="h2 text-default text-center d-inline-block mb-0">National Services</h6>
                                                 <div class="row mt-1">
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <a href="#" data-toggle="modal" data-target="#localbankModal">
-                                                            <!-- Modal -->
+                                                        <!-- Modal -->
                                                             <div class="modal fade" id="localbankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                   <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Banks</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                       <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                   </div>
                                                                   <div class="modal-body">
-                                                                    ...
-                                                                  </div>
+                                                                    <!-- ici -->
+                                                                    <div class="header-body">
+                                                                        <!-- Card stats -->
+                                                                        <div class="row">
+
+                                                                            @foreach($banks as $b)
+                                                                            <div class="col-xl-6 col-lg-12 pt-1">
+                                                                                <div class="card card-stats mb-1 mb-xl-0">
+                                                                                    <a href="{{ route('method.bank',$b->id) }}">
+                                                                                    <div class="card-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <h5 class="card-title text-uppercase text-muted mb-0">{{$b->name}}</h5>
+                                                                                                <span class="h6 font-weight-bold mb-0">{{$b->description}}</span>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <div class="icon icon-shape rounded-circle shadow">
+                                                                                                    <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/banks/'.$b->img)}}">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                                                                            <span class="text-info mr-2"><i class="fas fa-arrow-down"></i> Infos: </span>
+                                                                                            <span class="text-nowrap">Clic here</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ici -->
+                                                                </div>
                                                                   <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                     <button type="button" class="btn btn-primary">Save changes</button>
@@ -302,12 +366,13 @@
                                                                 </div>
                                                               </div>
                                                             </div>
+                                                        <a href="#" data-toggle="modal" data-target="#localbankModal">
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col">
-                                                                        <h5 class="card-title text-uppercase text-muted mb-0">Banks</h5>
-                                                                        <span class="h2 font-weight-bold mb-0">1</span>
+                                                                        <h5 class="card-title text-uppercase text-muted mb-0">bank</h6>
+                                                                        <span class="h5 font-weight-bold mb-0">available</span>
                                                                     </div>
                                                                     <div class="col-auto">
                                                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -316,8 +381,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="h6 text-success mr-2"><i class="fa fa-arrow-up"></i> Subscribed</span>
-                                                                    <span class="text-nowrap">Since last month</span>
+                                                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>@if(!empty($banks)) {{ $banks->count() }} @else 0 @endif</span>
+                                                                    <span class="text-nowrap">Clic here</span>
                                                                 </p>
                                                             </div>
                                                         </div>

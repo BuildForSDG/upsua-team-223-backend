@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Services Management')])
+@extends('layouts.app', ['title' => __('Banks Management')])
 
 @section('content')
     <div class="header bg-primary bg-gradient-primary pb-6 pt-3 pt-md-8">
@@ -10,14 +10,14 @@
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="{{route('otherservice.index')}}">Services</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('bank.index')}}">Banks</a></li>
                 <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ol>
             </nav>
         </div>
             <div class="col-lg-6 col-5 text-right">
-                @can('other-service-create')
-                <a href="{{ route('otherservice.create') }}" class="btn btn-sm btn-neutral">New service</a>
+                @can('bank-create')
+                <a href="{{ route('bank.create') }}" class="btn btn-sm btn-neutral">New service</a>
                 @endcan
             </div>
         </div>
@@ -31,11 +31,11 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Services list') }}</h3>
+                                <h3 class="mb-0">{{ __('banks list') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-							@can('other-service-create')
-                                <a href="{{ route('otherservice.create') }}" class="btn btn-sm btn-primary">{{ __('Add service') }}</a>
+							@can('bank-create')
+                                <a href="{{ route('bank.create') }}" class="btn btn-sm btn-primary">{{ __('Add service') }}</a>
                             @endcan
                             </div>
                         </div>
@@ -67,32 +67,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($otherServices as $otherservice)
+                                @foreach ($banks as $bank)
                                     <tr>
-                                        <td><img class="w-30 h-30" width="30" src="{{asset('/assets/img/services/'.$otherservice->img)}}"></td>
-                                        <td>{{ $otherservice->name }}</td>
-                                        <td>{{ $otherservice->description }}</td>
-										<td>{{ $otherservice->number }}</td>
-										<td>{{ $otherservice->partner->user->name }}</td>
-										<td>{{ $otherservice->locality->name }}</td>
-                                        <td>{{ $otherservice->created_at->format('d/m/Y H:i') }}</td>
+                                        <td><img class="w-30 h-30" width="30" src="{{asset('/assets/img/banks/'.$bank->img)}}"></td>
+                                        <td>{{ $bank->name }}</td>
+                                        <td>{{ $bank->description }}</td>
+										<td>{{ $bank->number }}</td>
+										<td>{{ $bank->partner->user->name }}</td>
+										<td>{{ $bank->locality->name }}</td>
+                                        <td>{{ $bank->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
-                                                @can('other-service-list')
+                                                @can('bank-list')
 													<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-															<form action="{{ route('otherservice.destroy', $otherservice) }}" method="post">
+															<form action="{{ route('bank.destroy', $bank) }}" method="post">
 																@csrf
 																@method('delete')
-																	@can('other-service-list')
-                                                                    <a class="dropdown-item" href="{{ route('otherservice.show',$otherservice->id) }}">{{ __('Show') }}</a>
+																	@can('bank-list')
+                                                                    <a class="dropdown-item" href="{{ route('bank.show',$bank->id) }}">{{ __('Show') }}</a>
 																	@endcan
-																	@can('other-service-edit')
-																	<a class="dropdown-item" href="{{ route('otherservice.edit',$otherservice->id) }}">{{ __('Edit') }}</a>
+																	@can('bank-edit')
+																	<a class="dropdown-item" href="{{ route('bank.edit',$bank->id) }}">{{ __('Edit') }}</a>
 																	@endcan
-																@can('other-service-delete')
+																@can('bank-delete')
 																<button type="button" class="dropdown-item" onclick="confirm('{{ __("are you sure you want to delete the service?") }}') ? this.parentElement.submit() : ''">
 																	{{ __('Remove') }}
 																</button>

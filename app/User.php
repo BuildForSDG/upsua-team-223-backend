@@ -72,4 +72,14 @@ class User extends Authenticatable
     public function country(){
         return $this->belongsTo(Country::class);
     }
+
+    public function banks()
+    {
+        return $this->belongsToMany(Bank::class, 'user_banks');
+    }
+
+    public function finances()
+    {
+        return $this->belongsToMany(Bank::class, 'user_finances');
+    }
 }

@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Services')])
+@extends('layouts.app', ['title' => __('Banks')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('All Services')])
+    @include('users.partials.header', ['title' => __('All Banks')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('List of Services') }}</h3>
+                                <h3 class="mb-0">{{ __('List of Banks') }}</h3>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('home') }}" class="btn btn-sm btn-primary">{{ __('Dashboard') }}</a>
@@ -23,10 +23,10 @@
                             <!-- Card stats -->
                             <div class="row">
 
-                                @foreach($otherServices as $s)
+                                @foreach($banks as $s)
                                 <div class="col-xl-3 col-lg-6 pt-1">
                                     <div class="card card-stats mb-1 mb-xl-0">
-                                        <a href="{{ route('method.services',$s->id) }}">
+                                        <a href="{{ route('method.bank',$s->id) }}">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
@@ -35,7 +35,7 @@
                                                 </div>
                                                 <div class="col-auto">
                                                     <div class="icon icon-shape rounded-circle shadow">
-                                                        <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/services/'.$s->img)}}">
+                                                        <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/banks/'.$s->img)}}">
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Services Management')])
+@extends('layouts.app', ['title' => __('banks Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('show Service')])
+    @include('users.partials.header', ['title' => __('show bank')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -20,10 +20,10 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Service') }}</h3>
+                                <h3 class="mb-0">{{ __('bank') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('otherservice.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
+                                <a href="{{ route('bank.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
                             </div>
                         </div>
                     </div>
@@ -32,42 +32,42 @@
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Name:</strong>
-									{{ $otherService->name }}
-									@if(isset($otherService->img))<img class="w-30 h-30" width="30" src="{{asset('/assets/img/services/'.$otherService->img)}}">@endif
+									{{ $bank->name }}
+									@if(isset($bank->img))<img class="w-30 h-30" width="30" src="{{asset('/assets/img/banks/'.$bank->img)}}">@endif
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Description:</strong>
-									{{ $otherService->description }}
+									{{ $bank->description }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Unique Number:</strong>
-									{{ $otherService->number }}
+									{{ $bank->number }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Partner:</strong>
-									{{ $otherService->partner->user->name }}
+									{{ $bank->partner->user->name }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Locality:</strong>
-									{{ $otherService->locality->name }}
+									{{ $bank->locality->name }}
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<strong>Creation date:</strong>
-									{{ $otherService->created_at->format('d/m/Y H:i') }}
+									{{ $bank->created_at->format('d/m/Y H:i') }}
 								</div>
 							</div>
                         </div>
-                        @can('other-service-cost-list')
+                        @can('bank-cost-list')
                         <div class="table-responsive">
                             <h6 class="heading-small text-muted mb-4">{{ __('Other service Cost information') }}</h6>
                             <table class="table align-items-center table-flush"  id="datatable-buttons">
@@ -90,16 +90,16 @@
                                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
-                                                    @can('other-service-cost-list')
+                                                    @can('bank-cost-list')
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <form action="{{ route('otherservicecost.destroy', $cost) }}" method="post">
+                                                                <form action="{{ route('bankcost.destroy', $cost) }}" method="post">
                                                                     @csrf
                                                                     @method('delete')
-                                                                        @can('other-service-cost-edit')
-                                                                        <a class="dropdown-item" href="{{ route('otherservicecost.edit',$cost->id) }}">{{ __('Edit') }}</a>
+                                                                        @can('bank-cost-edit')
+                                                                        <a class="dropdown-item" href="{{ route('bankcost.edit',$cost->id) }}">{{ __('Edit') }}</a>
                                                                         @endcan
-                                                                    @can('other-service-cost-delete')
-                                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("are you sure you want to delete the service cost?") }}') ? this.parentElement.submit() : ''">
+                                                                    @can('bank-cost-delete')
+                                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("are you sure you want to delete the bank cost?") }}') ? this.parentElement.submit() : ''">
                                                                         {{ __('Remove') }}
                                                                     </button>
                                                                     @endcan
@@ -115,13 +115,13 @@
                         </div>
                         @endcan
                         <br>
-                        @can('other-service-cost-create')
-                        <form method="post" action="{{ route('otherservicecost.store') }}" enctype="multipart/form-data" autocomplete="off">
+                        @can('bank-cost-create')
+                        <form method="post" action="{{ route('bankcost.store') }}" enctype="multipart/form-data" autocomplete="off">
                             <h6 class="heading-small text-muted mb-4">{{ __('add new service Cost') }}</h6>
                                 @csrf
                                 <div class="form-group{{ $errors->has('min') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-min">{{ __('Min value') }}</label>
-                                    <input type="hidden" value="{{ $otherService->id }}" name="other_service_id">
+                                    <input type="hidden" value="{{ $bank->id }}" name="bank_id">
                                     <input type="number" name="min" id="input-min" class="form-control form-control-alternative{{ $errors->has('min') ? ' is-invalid' : '' }}" placeholder="{{ __('Min value') }}" value="{{ old('min') }}" required="true">
 
                                     @if ($errors->has('min'))

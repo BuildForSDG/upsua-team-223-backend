@@ -138,10 +138,19 @@
                     <div class="collapse" id="navbar-bank">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
+                                <a class="nav-link" href="{{ route('users.bank') }}">
+                                    {{ __('Banks') }}
                                 </a>
                             </li>
+                            @if(!empty(auth()->user()->banks))
+                            @foreach (auth()->user()->banks as $b)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('method.bank',$b->id) }}">
+                                    {{ __($b->name) }}
+                                </a>
+                            </li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </li>
@@ -265,22 +274,13 @@
                 </li>
                 @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#navbar-m-bank" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-bank">
-                        <i class="ni ni-chart-bar-32 text-puple" style="color: #7e7586;"></i>
-                        <span class="nav-link-text" style="color: #3cd649;">{{ __('Bank Management') }}</span>
+                 @can('bank-list')
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('bank.index') }}">
+                        <i class="ni ni-chart-bar-32 text-puple" style="color:#3cd649;"></i> {{ __('Bank Management') }}
                     </a>
-
-                    <div class="collapse" id="navbar-m-bank">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-m-finance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-finance">

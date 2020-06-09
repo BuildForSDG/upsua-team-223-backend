@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Services Management')])
+@extends('layouts.app', ['title' => __('Bank Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Add services')])
+    @include('users.partials.header', ['title' => __('Add Bank')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,18 +10,18 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Services management') }}</h3>
+                                <h3 class="mb-0">{{ __('Bank management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('otherservice.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
+                                <a href="{{ route('bank.index') }}" class="btn btn-sm btn-primary">{{ __('Returns to the list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('otherservice.store') }}" enctype="multipart/form-data" autocomplete="off">
+                        <form method="post" action="{{ route('bank.store') }}" enctype="multipart/form-data" autocomplete="off">
                             @csrf
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('Services information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Bank information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
