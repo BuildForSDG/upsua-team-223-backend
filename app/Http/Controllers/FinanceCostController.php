@@ -114,6 +114,6 @@ class FinanceCostController extends Controller
     {
         $cost=FinanceCost::find($finance_cost_id);
         $cost->delete();
-        return redirect()->route('finance.show',$cost->bank->id)->withStatus(__('Finance Cost deleted successfully.'));
+        return redirect()->route('finance.show',$cost->finance->id)->withStatus(__('Finance Cost deleted successfully.'));
     }
 }

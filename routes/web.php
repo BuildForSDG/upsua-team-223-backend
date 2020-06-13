@@ -91,8 +91,8 @@ Route::middleware('basic')->group(function () {
     Route::get('methods/{id}/service', 'UserServiceController@methodService')->name('method.services');
     Route::get('methods/bank', 'UserBankController@userBank')->name('users.bank');
     Route::get('methods/{id}/bank', 'UserBankController@methodBank')->name('method.bank');
-    Route::get('methods/finance', 'UserFinanceController@userBank')->name('users.finance');
-    Route::get('methods/{id}/bank', 'UserFinanceController@methodBank')->name('method.finance');
+    Route::get('methods/finance', 'UserFinanceController@userFinance')->name('users.finance');
+    Route::get('methods/{id}/finance', 'UserFinanceController@methodFinance')->name('method.finance');
 });
 Route::middleware('business')->group(function () {
 });

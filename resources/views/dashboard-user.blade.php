@@ -90,27 +90,59 @@
                                                         </a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <a href="#" data-toggle="modal" data-target="#internationalFinanceModal">
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="internationalFinanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+														<!-- Modal -->
+														<div class="modal fade" id="internationalFinanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															<div class="modal-dialog modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Finance method</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    ...
+                                                                    <!-- ici -->
+                                                                    <div class="header-body">
+                                                                        <!-- Card stats -->
+                                                                        <div class="row">
+
+                                                                            @foreach($finances as $f)
+                                                                            <div class="col-xl-6 col-lg-12 pt-1">
+                                                                                <div class="card card-stats mb-1 mb-xl-0">
+                                                                                    <a href="{{ route('method.finance',$f->id) }}">
+                                                                                    <div class="card-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <h5 class="card-title text-uppercase text-muted mb-0">{{$f->name}}</h5>
+                                                                                                <span class="h6 font-weight-bold mb-0">{{$f->description}}</span>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <div class="icon icon-shape rounded-circle shadow">
+                                                                                                    <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/finances/'.$f->img)}}">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                                                                            <span class="text-info mr-2"><i class="fas fa-arrow-down"></i> Infos: </span>
+                                                                                            <span class="text-nowrap">Clic here</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ici -->
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                                 </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <a href="#" data-toggle="modal" data-target="#internationalFinanceModal">
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -125,8 +157,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 0</span>
-                                                                    <span class="text-nowrap">230 total</span>
+                                                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>@if(!empty($finances)) {{ $finances->count() }} @else 0 @endif</span>
+                                                                    <span class="text-nowrap">Clic here</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -372,7 +404,7 @@
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <h5 class="card-title text-uppercase text-muted mb-0">bank</h6>
-                                                                        <span class="h5 font-weight-bold mb-0">available</span>
+                                                                        <span class="h6 font-weight-bold mb-0">available</span>
                                                                     </div>
                                                                     <div class="col-auto">
                                                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -386,35 +418,68 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+														</a>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-6">
-                                                        <a href="#" data-toggle="modal" data-target="#localfinanceModal">
-                                                        <!-- Modal -->
+														<!-- Modal -->
                                                         <div class="modal fade" id="localfinanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ...
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                                            </div>
+															<div class="modal-dialog modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Finance method</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <!-- ici -->
+                                                                    <div class="header-body">
+                                                                        <!-- Card stats -->
+                                                                        <div class="row">
+
+                                                                            @foreach($finances as $f)
+                                                                            <div class="col-xl-6 col-lg-12 pt-1">
+                                                                                <div class="card card-stats mb-1 mb-xl-0">
+                                                                                    <a href="{{ route('method.finance',$f->id) }}">
+                                                                                    <div class="card-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <h5 class="card-title text-uppercase text-muted mb-0">{{$f->name}}</h5>
+                                                                                                <span class="h6 font-weight-bold mb-0">{{$f->description}}</span>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <div class="icon icon-shape rounded-circle shadow">
+                                                                                                    <img class="rounded-circle shadow" width="30" src="{{asset('/assets/img/finances/'.$f->img)}}">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                                                                            <span class="text-info mr-2"><i class="fas fa-arrow-down"></i> Infos: </span>
+                                                                                            <span class="text-nowrap">Clic here</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ici -->
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        </div>
+                                                        <a href="#" data-toggle="modal" data-target="#localfinanceModal">
                                                         <div class="card card-stats mb-4 mb-xl-0">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <h5 class="card-title text-uppercase text-muted mb-0">Finance</h5>
-                                                                        <span class="h2 font-weight-bold mb-0">50</span>
+                                                                        <span class="h6 font-weight-bold mb-0">available</span>
                                                                     </div>
                                                                     <div class="col-auto">
                                                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -423,8 +488,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                                                    <span class="h6 text-success mr-2"><i class="fas fa-arrow-up"></i> Subscribe</span>
-                                                                    <span class="text-nowrap">Since last week</span>
+                                                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>@if(!empty($finances)) {{ $finances->count() }} @else 0 @endif</span>
+                                                                    <span class="text-nowrap">Clic here</span>
                                                                 </p>
                                                             </div>
                                                         </div>

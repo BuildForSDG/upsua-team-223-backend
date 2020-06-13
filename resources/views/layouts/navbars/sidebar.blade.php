@@ -165,10 +165,19 @@
                         <ul class="nav nav-sm flex-column">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
+                                <a class="nav-link" href="{{ route('users.finance') }}">
+                                    {{ __('Finances') }}
                                 </a>
                             </li>
+                            @if(!empty(auth()->user()->finances))
+                            @foreach (auth()->user()->finances as $f)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('method.finance',$f->id) }}">
+                                    {{ __($f->name) }}
+                                </a>
+                            </li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </li>
@@ -274,31 +283,22 @@
                 </li>
                 @endcan
 
-                 @can('bank-list')
+                @can('bank-list')
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('bank.index') }}">
                         <i class="ni ni-chart-bar-32 text-puple" style="color:#3cd649;"></i> {{ __('Bank Management') }}
                     </a>
                 </li>
                 @endcan
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#navbar-m-finance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-finance">
-                        <i class="ni ni-chart-pie-35 text-puple" style="color: #749938;"></i>
-                        <span class="nav-link-text" style="color: #a0a9dd;">{{ __('Finance Management') }}</span>
+				
+				@can('finance-list')
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('finance.index') }}">
+                        <i class="ni ni-chart-pie-35 text-puple" style="color: #749938;"></i> {{ __('Finance Management') }}
                     </a>
-
-                    <div class="collapse" id="navbar-m-finance">
-                        <ul class="nav nav-sm flex-column">
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('My choose') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                @endcan
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-m-insurance" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-m-insurance">

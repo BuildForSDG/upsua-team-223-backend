@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Payment;
 use App\OtherService;
 use App\Bank;
+use App\Finance;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,8 @@ class HomeController extends Controller
         $otherServices=OtherService::all();
         $payments=Payment::all();
         $banks=Bank::all();
-        return view('dashboard-user',compact('payments','otherServices','banks'));
+		$finances=Finance::all();
+        return view('dashboard-user',compact('payments','otherServices','banks','finances'));
     }
 
     public function test()

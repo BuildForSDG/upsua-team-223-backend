@@ -1,4 +1,3 @@
 <?php
-require "vendor/autoload.php";
-
-use App\Project;
+  header('Location: public/');
+?>
